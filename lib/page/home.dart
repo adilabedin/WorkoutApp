@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/elevatedButton.dart';
+import 'package:workout_app/page/createWorkout.dart';
+import 'package:workout_app/widgets/workoutCard.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -13,74 +13,63 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text('Workout App'),
-      ),
-      body: Container(
+      body: SafeArea(
         child: Container(
-          margin: EdgeInsets.all(10),
-          color: Colors.green,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24.0,
+          ),
+          child: Stack(
             children: [
-              Align(
-                alignment: const Alignment(0, -1),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 2.0, color: Colors.black),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: 32.0,
+                      bottom: 32.0,
+                    ),
+                    child: Text('Your Workouts'),
                   ),
-                  child: Row(
-                    children: [
-                      Text('workout name'),
-                    ],
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        WorkoutCard(
+                          title: "hello",
+                          desc: "hi",
+                        ),
+                        WorkoutCard(),
+                        WorkoutCard(),
+                        WorkoutCard(),
+                        WorkoutCard(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                bottom: 0.0,
+                right: 0.0,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateWorkout(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Image(
+                      image: AssetImage("images/addIcon.jpg"),
+                    ),
                   ),
                 ),
               ),
-              Align(
-                alignment: const Alignment(0, -.8),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Text('Additional Info'),
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const Alignment(0, -.6),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Text('Description'),
-                      editButton('edit', context, setState)
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const Alignment(0, -.4),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Text('URL'),
-                      SizedBox(width: 50),
-                      editButton('edit', context, setState)
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                child: Container(
-                  child: Row(
-                    children: [
-                      Text('Sets'),
-                      editButton('edit', context, setState)
-                    ],
-                  ),
-                ),
-              ),
-              editButton('save workout', context, setState)
             ],
           ),
         ),
@@ -88,20 +77,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-// child: Align(
-//   alignment: Alignment.topLeft,
-//   child: Container(
-//     decoration: BoxDecoration(border: Border.all()),
-//     child: Stack(
-//       children: <Widget>[
-//         Container(
-//           padding: EdgeInsets.all(8.0),
-//           child: Row(
-//             children: [
-//               Text('Workout Name'),
-//             ],
-//           ),
-//         ),
-
-

@@ -7,14 +7,13 @@ Widget editButton(String buttonName, context, setState) {
       primary: Colors.blue,
     ),
     onPressed: () {
+      print("why arent you working");
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (BuildContext context) => Home(),
         ),
       );
-      setState(() {
-        var buttonState = 'clicked';
-      });
+      setState(() {});
     },
     child: Text(buttonName),
   );
