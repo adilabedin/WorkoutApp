@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../page/home.dart';
+import 'package:workout_app/pages/HomePage/home.dart';
 
 Widget editButton(String buttonName, context, setState) {
   return ElevatedButton(

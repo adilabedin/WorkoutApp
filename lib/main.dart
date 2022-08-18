@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:workout_app/page/home.dart';
-import 'package:workout_app/page/settings.dart';
-import 'package:workout_app/page/ronaldo_siiupage/workouts.dart';
+import 'package:workout_app/pages/Discover/discover.dart';
+import 'package:workout_app/pages/HomePage/home.dart';
+import 'package:workout_app/pages/ProfilePage/profile.dart';
+import 'package:workout_app/pages/SettingsPage/settings.dart';
+import 'package:workout_app/pages/ronaldo_siiupage/workouts.dart';
+
+import 'pages/CreateWorkoutPage/createWorkout.dart';
+import 'pages/InboxPage/inbox.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,8 +39,10 @@ class MyAppExtension extends StatefulWidget {
 class _MyAppExtensionState extends State<MyAppExtension> {
   final screens = [
     Home(),
-    Workouts(),
-    Settings(),
+    Discover(),
+    CreateWorkout(),
+    Inbox(),
+    const ProfilePage()
   ];
   int currentIndex = 0;
   bool isClicked = false;
@@ -48,15 +55,28 @@ class _MyAppExtensionState extends State<MyAppExtension> {
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
+            backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            label: 'Workouts',
-            icon: Icon(Icons.sports),
+            label: 'Discover',
+            icon: Icon(Icons.search),
+            backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            label: 'Settings',
-            icon: Icon(Icons.settings),
-          )
+            label: 'Create Workout',
+            icon: Icon(Icons.add),
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            label: 'Inbox',
+            icon: Icon(Icons.inbox),
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.face_outlined),
+            backgroundColor: Colors.blue,
+          ),
         ],
         currentIndex: currentIndex,
         onTap: (int index) {
