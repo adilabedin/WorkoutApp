@@ -27,15 +27,38 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.2.0
+  cloud_firestore: ^3.1.6
+  firebase_auth: ^3.3.5
+  firebase_core: ^1.11.0
+  firebase_storage: ^10.2.5
   flutter:
     sdk: flutter
+  
+  provider: ^6.0.3
+  # database storage
+  sqflite: ^2.0.0+3
 
-  sqflite:
+  # format DateTime
+  intl: ^0.17.0
+
+  charts_flutter: ^0.12.0
+
+  video_player: ^2.4.7
+  # display todos in grid
+  flutter_staggered_grid_view: ^0.4.0-nullsafety.3
+  
   path:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
+  flutter_vector_icons: ^2.0.0
+  get: ^4.6.5
+  image_picker: ^0.8.4+4
+  timeago: ^3.1.0
+  video_compress: ^3.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +93,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    #- assets/video.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

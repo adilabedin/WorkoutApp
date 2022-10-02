@@ -1,15 +1,31 @@
-class User {
-  final String imagePath;
-  final String name;
-  final String email;
-  final String about;
-  final bool isDarkMode;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-  const User({
-    required this.imagePath,
-    required this.name,
-    required this.email,
-    required this.about,
-    required this.isDarkMode,
-  });
+class User {
+  String name;
+  String profilePhoto;
+  String email;
+  String uid;
+
+  User(
+      {required this.name,
+      required this.email,
+      required this.uid,
+      required this.profilePhoto});
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "profilePhoto": profilePhoto,
+        "email": email,
+        "uid": uid,
+      };
+
+  static User fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+    return User(
+      email: snapshot['email'],
+      profilePhoto: snapshot['profilePhoto'],
+      uid: snapshot['uid'],
+      name: snapshot['name'],
+    );
+  }
 }

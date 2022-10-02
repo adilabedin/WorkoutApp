@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1046762028453",
+    "project_id": "workout-app-2916f",
+    "storage_bucket": "workout-app-2916f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046762028453:android:e5501380c8eefc21a0bc4c",
+        "android_client_info": {
+          "package_name": "com.abedin.workout_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046762028453-c00e4ffdk3a9s18t6hr94n6mp3rm1316.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeesd4kM8yQ-FkByjgIiF1XJeoc-r7IIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046762028453-c00e4ffdk3a9s18t6hr94n6mp3rm1316.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
