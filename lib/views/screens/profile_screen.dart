@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/profile_controller.dart';
+import 'package:workout_app/views/screens/SettingsPage/settings.dart';
+import 'package:workout_app/views/screens/workoutData.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -36,14 +39,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
             );
           }
           return Scaffold(
+            endDrawer: Drawer(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  ListTile(
+                      title: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Center(
+                          child: const Text('Sign Out',
+                              style:
+                                  TextStyle(color: Colors.red, fontSize: 25)),
+                        ),
+                      ),
+                      onTap: () {
+                        authController.signOut();
+                      })
+                ],
+              ),
+            ),
             appBar: AppBar(
               backgroundColor: Colors.black12,
               leading: const Icon(
                 Icons.person_add_alt_1_outlined,
               ),
-              actions: const [
-                Icon(Icons.more_horiz),
-              ],
               title: Text(
                 controller.user['name'],
                 style: const TextStyle(
@@ -171,14 +190,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: InkWell(
                                 onTap: () {
                                   if (widget.uid == authController.user.uid) {
-                                    authController.signOut();
+                                    Get.to(WorkoutData());
                                   } else {
                                     controller.followUser();
                                   }
                                 },
                                 child: Text(
                                   widget.uid == authController.user.uid
-                                      ? 'Sign Out'
+                                      ? 'WorkoutData'
                                       : controller.user['isFollowing']
                                           ? 'Unfollow'
                                           : 'Follow',

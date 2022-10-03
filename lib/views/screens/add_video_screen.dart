@@ -3,18 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/upload_video_controller.dart';
+import 'package:workout_app/views/screens/WorkoutPage/createWorkout.dart';
 import 'package:workout_app/views/screens/confirm_screen.dart';
-import 'package:workout_app/views/widgets/buildDescription.dart';
-import 'package:workout_app/views/widgets/buildTitle.dart';
 import 'package:get/get.dart';
 
 class AddVideoScreen extends StatelessWidget {
   AddVideoScreen({Key? key}) : super(key: key);
-  TextEditingController _songController = TextEditingController();
-  TextEditingController _captionController = TextEditingController();
-  final setController = TextEditingController();
-  final repController = TextEditingController();
-  final timeController = TextEditingController();
 
   UploadVideoController uploadVideoController =
       Get.put(UploadVideoController());
@@ -90,108 +84,53 @@ class AddVideoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widget;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: Flexible(
-                child: Column(
-                  children: [
-                    InkWell(
-                      onTap: () => showOptionsDialog(context),
-                      child: Container(
-                        width: 190,
-                        height: 50,
-                        decoration: BoxDecoration(color: buttonColor),
-                        child: Text(
-                          'Add Video',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Create Workout'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            InkWell(
+              onTap: () => showOptionsDialog(context),
+              child: Container(
+                width: 190,
+                height: 50,
+                decoration: BoxDecoration(color: buttonColor),
+                child: Center(
+                  child: Text(
+                    'Create with Video',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          BuildTitle(),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          BuildDescription(),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              buildNumber('Sets', setController),
-                              const SizedBox(width: 7),
-                              buildNumber('Reps', repController),
-                              const SizedBox(width: 7),
-                              buildNumber('Time', timeController),
-                              const SizedBox(width: 7),
-                            ],
-                          ),
-                          ElevatedButton(
-                              onPressed: () =>
-                                  uploadVideoController.uploadVideo(
-                                      _songController.text,
-                                      _captionController.text,
-                                      widget.videoPath),
-                              child: const Text(
-                                'Share!',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              )),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildNumber(name, numberController) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: 80,
-              height: 80,
-              child: TextField(
-                controller: numberController,
-                decoration: InputDecoration(
-                  hintText: 'Enter number...',
-                  hintStyle: TextStyle(color: Colors.blue),
-                  filled: true,
-                  fillColor: Colors.black,
-                  border: OutlineInputBorder(),
+            InkWell(
+              onTap: () => Get.to(CreateWorkout()),
+              child: Container(
+                width: 190,
+                height: 50,
+                decoration: BoxDecoration(color: buttonColor),
+                child: Center(
+                  child: Text(
+                    'Create without Video',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                style: TextStyle(color: Colors.blue),
-                keyboardType: TextInputType.number,
               ),
             ),
           ],
         ),
-      );
+      ),
+    );
+  }
 }

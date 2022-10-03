@@ -18,7 +18,7 @@ class _FavouriteWorkoutsState extends State<FavouriteWorkouts> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text("Search for Workouts"),
+        title: Text("Discover New Workouts"),
         actions: [
           IconButton(
               onPressed: () {

@@ -79,13 +79,13 @@ class _WorkoutDataState extends State<WorkoutData> {
   Widget buildPages() {
     switch (_selectedIndex) {
       case 0:
-        return Home();
+        return QuickWorkout();
       case 1:
         return QuickWorkout();
       case 2:
         return QuickWorkout();
       default:
-        return Home();
+        return QuickWorkout();
     }
   }
 }
