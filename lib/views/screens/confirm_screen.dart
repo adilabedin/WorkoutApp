@@ -7,6 +7,7 @@ import 'package:workout_app/views/widgets/buildTitle.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 import 'package:workout_app/views/widgets/buildNumber.dart';
+import 'package:workout_app/views/widgets/workoutType.dart';
 
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
@@ -72,6 +73,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  WorkoutType(),
                   BuildTitle(),
                   const SizedBox(
                     height: 10,

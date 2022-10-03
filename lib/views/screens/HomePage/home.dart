@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_app/constants.dart';
 
@@ -31,8 +32,8 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, size: 30),
-            label: 'Search',
+            icon: Icon(CupertinoIcons.heart_fill),
+            label: 'Favourites',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),

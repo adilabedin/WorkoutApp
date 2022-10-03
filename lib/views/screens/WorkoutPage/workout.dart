@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workout_app/views/screens/WorkoutPage/createWorkout.dart';
 import 'package:workout_app/views/screens/WorkoutPage/quickWorkout.dart';
 import 'package:workout_app/views/screens/WorkoutPage/quickWorkoutSettings.dart';
@@ -24,29 +24,7 @@ class _WorkoutState extends State<Workout> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => QuickWorkoutSettings()),
-                );
-              },
-              child: Text(
-                'Quick Workout',
-                style: TextStyle(color: Colors.blue, fontSize: 40),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddVideoScreen()),
-                );
+                Get.to(AddVideoScreen());
               },
               child: Text(
                 'Create Workout',

@@ -93,71 +93,73 @@ class AddVideoScreen extends StatelessWidget {
     var widget;
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Flexible(
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () => showOptionsDialog(context),
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      width: 190,
-                      height: 50,
-                      decoration: BoxDecoration(color: buttonColor),
-                      child: Text(
-                        'Add Video',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Flexible(
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () => showOptionsDialog(context),
+                      child: Container(
+                        width: 190,
+                        height: 50,
+                        decoration: BoxDecoration(color: buttonColor),
+                        child: Text(
+                          'Add Video',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        BuildTitle(),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        BuildDescription(),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            buildNumber('Sets', setController),
-                            const SizedBox(width: 7),
-                            buildNumber('Reps', repController),
-                            const SizedBox(width: 7),
-                            buildNumber('Time', timeController),
-                            const SizedBox(width: 7),
-                          ],
-                        ),
-                        ElevatedButton(
-                            onPressed: () => uploadVideoController.uploadVideo(
-                                _songController.text,
-                                _captionController.text,
-                                widget.videoPath),
-                            child: const Text(
-                              'Share!',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                            )),
-                      ],
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
-                ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          BuildTitle(),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          BuildDescription(),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              buildNumber('Sets', setController),
+                              const SizedBox(width: 7),
+                              buildNumber('Reps', repController),
+                              const SizedBox(width: 7),
+                              buildNumber('Time', timeController),
+                              const SizedBox(width: 7),
+                            ],
+                          ),
+                          ElevatedButton(
+                              onPressed: () =>
+                                  uploadVideoController.uploadVideo(
+                                      _songController.text,
+                                      _captionController.text,
+                                      widget.videoPath),
+                              child: const Text(
+                                'Share!',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              )),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

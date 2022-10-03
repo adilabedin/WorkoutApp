@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/video_controller.dart';
 import 'package:workout_app/views/screens/comment_screen.dart';
+import 'package:workout_app/views/screens/search_screen.dart';
 import 'package:workout_app/views/widgets/circle_animation.dart';
 import 'package:workout_app/views/widgets/video_player_iten.dart';
 
@@ -75,6 +76,17 @@ class VideoScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(SearchScreen());
+              },
+              icon: Icon(Icons.search, size: 30))
+        ],
+      ),
       body: Obx(() {
         return PageView.builder(
           itemCount: videoController.videoList.length,
