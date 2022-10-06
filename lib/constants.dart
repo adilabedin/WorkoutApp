@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_app/controllers/auth_controller.dart';
-import 'package:workout_app/views/screens/WorkoutPage/workout.dart';
 import 'package:workout_app/views/screens/add_video_screen.dart';
 import 'package:workout_app/views/screens/favouriteWorkouts.dart';
 import 'package:workout_app/views/screens/messages_screen.dart';

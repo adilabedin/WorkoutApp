@@ -5,8 +5,9 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/profile_controller.dart';
-import 'package:workout_app/views/screens/SettingsPage/settings.dart';
-import 'package:workout_app/views/screens/workoutData.dart';
+import 'package:workout_app/controllers/video_controller.dart';
+import 'package:workout_app/views/screens/workout_data_screen.dart';
+import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -21,6 +22,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final ProfileController profileController = Get.put(ProfileController());
+  final VideoController videoController = Get.put(VideoController());
 
   @override
   void initState() {
@@ -219,16 +221,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             itemCount: controller.user['thumbnails'].length,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
+                              crossAxisCount: 3,
                               childAspectRatio: 1,
                               crossAxisSpacing: 5,
                             ),
                             itemBuilder: (context, index) {
                               String thumbnail =
                                   controller.user['thumbnails'][index];
-                              return CachedNetworkImage(
-                                imageUrl: thumbnail,
-                                fit: BoxFit.cover,
+                              return InkWell(
+                                child: CachedNetworkImage(
+                                  imageUrl: thumbnail,
+                                  fit: BoxFit.cover,
+                                ),
                               );
                             },
                           )

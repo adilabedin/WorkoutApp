@@ -6,8 +6,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/models/user.dart' as model;
 import 'package:workout_app/constants.dart';
-import 'package:workout_app/views/screens/HomePage/home.dart';
 import 'package:workout_app/views/screens/auth/loginScreen.dart';
+import 'package:workout_app/views/screens/home_screen.dart';
+import 'package:workout_app/views/screens/video_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -29,7 +30,7 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(() => const Home());
+      Get.offAll(() => HomeScreen());
     }
   }
 

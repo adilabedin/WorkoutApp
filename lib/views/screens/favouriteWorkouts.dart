@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/favourite_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
-import 'package:workout_app/views/screens/WorkoutPage/createWorkout.dart';
-import 'package:workout_app/views/screens/WorkoutPage/quickWorkout.dart';
 import 'package:workout_app/views/screens/comment_screen.dart';
 import 'package:workout_app/views/screens/search_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';

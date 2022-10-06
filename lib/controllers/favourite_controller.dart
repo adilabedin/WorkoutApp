@@ -33,7 +33,7 @@ class FavouriteController extends GetxController {
         for (var elem in query.docs) {
           retVal.add(Favourites.fromSnap(elem));
         }
-        print(retVal);
+
         return retVal;
       }));
     }

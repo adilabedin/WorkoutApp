@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:workout_app/views/screens/WorkoutPage/workoutSummary.dart';
+import 'package:workout_app/views/screens/workout_data_screen.dart';
 
 class BuildWorkoutTimer extends StatefulWidget {
   const BuildWorkoutTimer({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _BuildWorkoutTimerState extends State<BuildWorkoutTimer> {
     setState(() {
       started = false;
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => WorkoutSummary()));
+          context, MaterialPageRoute(builder: (context) => WorkoutData()));
     });
   }
 

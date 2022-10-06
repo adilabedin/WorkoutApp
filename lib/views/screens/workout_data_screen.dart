@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:workout_app/views/screens/Discover/discover.dart';
-import 'package:workout_app/views/screens/HomePage/home.dart';
-import 'package:workout_app/views/screens/InboxPage/inbox.dart';
-import 'package:workout_app/views/screens/ProfilePage/profilePage.dart';
-import 'package:workout_app/views/screens/WorkoutPage/createWorkout.dart';
-import 'package:workout_app/views/screens/WorkoutPage/workout.dart';
-import 'package:workout_app/views/screens/WorkoutPage/quickWorkout.dart';
 
 class WorkoutData extends StatefulWidget {
   const WorkoutData({Key? key}) : super(key: key);
@@ -23,7 +16,6 @@ class _WorkoutDataState extends State<WorkoutData> {
   bool showLeading = true;
   bool showTrailing = true;
   double groupAligment = -1.0;
-  final screens = [Home(), Discover(), Workout(), Inbox(), ProfilePage()];
 
   bool isClicked = false;
 
@@ -36,7 +28,7 @@ class _WorkoutDataState extends State<WorkoutData> {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(CreateWorkout());
+                Get.to(WorkoutData());
               },
               icon: Icon(Icons.add_circle_rounded, size: 30)),
         ],
@@ -100,13 +92,13 @@ class _WorkoutDataState extends State<WorkoutData> {
   Widget buildPages() {
     switch (_selectedIndex) {
       case 0:
-        return QuickWorkout();
+        return WorkoutData();
       case 1:
-        return QuickWorkout();
+        return WorkoutData();
       case 2:
-        return QuickWorkout();
+        return WorkoutData();
       default:
-        return QuickWorkout();
+        return WorkoutData();
     }
   }
 }
