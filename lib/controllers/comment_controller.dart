@@ -27,6 +27,7 @@ class CommentController extends GetxController {
           for (var element in query.docs) {
             retValue.add(Comment.fromSnap(element));
           }
+          print(retValue);
           return retValue;
         },
       ),

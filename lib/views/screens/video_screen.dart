@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
+import 'package:workout_app/controllers/favourite_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
 import 'package:workout_app/views/screens/comment_screen.dart';
 import 'package:workout_app/views/screens/search_screen.dart';
-import 'package:workout_app/views/widgets/circle_animation.dart';
-import 'package:workout_app/views/widgets/video_player_iten.dart';
+import 'package:workout_app/views/screens/workout_card_screen.dart';
+import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class VideoScreen extends StatelessWidget {
   VideoScreen({Key? key}) : super(key: key);
 
   final VideoController videoController = Get.put(VideoController());
+  final FavouriteController favouriteController =
+      Get.put(FavouriteController());
 
   buildProfile(String profilePhoto) {
     return SizedBox(
@@ -38,36 +41,6 @@ class VideoScreen extends StatelessWidget {
           ),
         )
       ]),
-    );
-  }
-
-  buildMusicAlbum(String profilePhoto) {
-    return SizedBox(
-      width: 60,
-      height: 60,
-      child: Column(
-        children: [
-          Container(
-              padding: EdgeInsets.all(11),
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [
-                      Colors.grey,
-                      Colors.white,
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(25)),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25),
-                child: Image(
-                  image: NetworkImage(profilePhoto),
-                  fit: BoxFit.cover,
-                ),
-              ))
-        ],
-      ),
     );
   }
 
@@ -129,7 +102,7 @@ class VideoScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    data.caption,
+                                    data.title,
                                     style: const TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
@@ -143,7 +116,7 @@ class VideoScreen extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                       Text(
-                                        data.songName,
+                                        data.description,
                                         style: const TextStyle(
                                           fontSize: 15,
                                           color: Colors.white,
@@ -168,8 +141,8 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () =>
-                                          videoController.likeVideo(data.id),
+                                      onTap: () => favouriteController
+                                          .favouriteVideo(data.id),
                                       child: Icon(
                                         Icons.favorite,
                                         size: 40,
@@ -182,6 +155,78 @@ class VideoScreen extends StatelessWidget {
                                     const SizedBox(height: 7),
                                     Text(
                                       data.likes.length.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () => showDialog(
+                                          context: context,
+                                          builder: ((context) => AlertDialog(
+                                                title: Text(data.title),
+                                                content: Column(
+                                                  children: [
+                                                    Text(data.workoutType),
+                                                    Text(data.description),
+                                                    Row(
+                                                      children: [
+                                                        Text(data.sets),
+                                                        Text(data.reps),
+                                                        Text(data.time),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                actions: [
+                                                  InkWell(
+                                                    onTap: () =>
+                                                        favouriteController
+                                                            .favouriteVideo(
+                                                                data.id),
+                                                    child: Icon(
+                                                      Icons
+                                                          .fitness_center_outlined,
+                                                      size: 40,
+                                                      color: data.likes
+                                                              .contains(
+                                                                  authController
+                                                                      .user.uid)
+                                                          ? Colors.red
+                                                          : Colors.white,
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () =>
+                                                        favouriteController
+                                                            .favouriteVideo(
+                                                                data.id),
+                                                    child: Icon(
+                                                      Icons.favorite,
+                                                      size: 40,
+                                                      color: data.likes
+                                                              .contains(
+                                                                  authController
+                                                                      .user.uid)
+                                                          ? Colors.red
+                                                          : Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ))),
+                                      child: const Icon(
+                                        Icons.file_open,
+                                        size: 40,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 7),
+                                    Text(
+                                      ('Info'),
                                       style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.white,
@@ -234,9 +279,6 @@ class VideoScreen extends StatelessWidget {
                                       ),
                                     )
                                   ],
-                                ),
-                                CircleAnimation(
-                                  child: buildMusicAlbum(data.profilePhoto),
                                 ),
                               ],
                             ),

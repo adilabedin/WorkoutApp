@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Video {
+class Favourites {
   String username;
   String uid;
   String id;
@@ -17,7 +17,7 @@ class Video {
   String thumbnail;
   String profilePhoto;
 
-  Video({
+  Favourites({
     required this.username,
     required this.uid,
     required this.id,
@@ -53,10 +53,9 @@ class Video {
         "thumbnail": thumbnail,
       };
 
-  static Video fromSnap(DocumentSnapshot snap) {
+  static Favourites fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
-
-    return Video(
+    return Favourites(
       username: snapshot['username'],
       uid: snapshot['uid'],
       id: snapshot['id'],

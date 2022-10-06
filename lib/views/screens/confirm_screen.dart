@@ -6,8 +6,8 @@ import 'package:workout_app/views/widgets/buildDescription.dart';
 import 'package:workout_app/views/widgets/buildTitle.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
-import 'package:workout_app/views/widgets/buildNumber.dart';
-import 'package:workout_app/views/widgets/workoutType.dart';
+
+const List<String> list = <String>['Weight-Training', 'Cardio', 'Yoga'];
 
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
@@ -23,12 +23,14 @@ class ConfirmScreen extends StatefulWidget {
 }
 
 class _ConfirmScreenState extends State<ConfirmScreen> {
+  static String dropdownValue = list.first;
   late VideoPlayerController controller;
-  TextEditingController _songController = TextEditingController();
-  TextEditingController _captionController = TextEditingController();
-  final setController = TextEditingController();
-  final repController = TextEditingController();
-  final timeController = TextEditingController();
+  TextEditingController _workoutTypeController = TextEditingController();
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
+  TextEditingController _setController = TextEditingController();
+  TextEditingController _repController = TextEditingController();
+  TextEditingController _timeController = TextEditingController();
 
   UploadVideoController uploadVideoController =
       Get.put(UploadVideoController());
@@ -73,29 +75,85 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  WorkoutType(),
-                  BuildTitle(),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: TextInputField(
+                      controller: _workoutTypeController,
+                      labelText: 'Workout Type',
+                      icon: Icons.music_note,
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: TextInputField(
+                      controller: _titleController,
+                      labelText: 'Workout Name',
+                      icon: Icons.music_note,
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  BuildDescription(),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: TextInputField(
+                      controller: _descriptionController,
+                      labelText: 'description',
+                      icon: Icons.closed_caption,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
-                      buildNumber('Sets', setController),
-                      const SizedBox(width: 24),
-                      buildNumber('Reps', repController),
-                      const SizedBox(width: 24),
-                      buildNumber('Time', timeController),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: 100,
+                        child: TextInputField(
+                          controller: _setController,
+                          labelText: 'Sets',
+                          icon: Icons.closed_caption,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: 100,
+                        child: TextInputField(
+                          controller: _repController,
+                          labelText: 'Reps',
+                          icon: Icons.music_note,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: 100,
+                        child: TextInputField(
+                          controller: _timeController,
+                          labelText: 'time',
+                          icon: Icons.closed_caption,
+                        ),
+                      ),
                       const SizedBox(width: 24),
                     ],
                   ),
                   ElevatedButton(
                       onPressed: () => uploadVideoController.uploadVideo(
-                          _songController.text,
-                          _captionController.text,
+                          _workoutTypeController.text,
+                          _titleController.text,
+                          _descriptionController.text,
+                          _setController.text,
+                          _repController.text,
+                          _timeController.text,
                           widget.videoPath),
                       child: const Text(
                         'Share!',
@@ -112,31 +170,4 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
       ),
     );
   }
-
-  Widget buildNumber(name, numberController) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: 80,
-              height: 80,
-              child: TextField(
-                controller: numberController,
-                decoration: InputDecoration(
-                  hintText: 'Enter number...',
-                  hintStyle: TextStyle(color: Colors.blue),
-                  filled: true,
-                  fillColor: Colors.black,
-                  border: OutlineInputBorder(),
-                ),
-                style: TextStyle(color: Colors.blue),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-          ],
-        ),
-      );
 }

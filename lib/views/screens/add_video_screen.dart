@@ -100,25 +100,7 @@ class AddVideoScreen extends StatelessWidget {
                 decoration: BoxDecoration(color: buttonColor),
                 child: Center(
                   child: Text(
-                    'Create with Video',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () => Get.to(CreateWorkout()),
-              child: Container(
-                width: 190,
-                height: 50,
-                decoration: BoxDecoration(color: buttonColor),
-                child: Center(
-                  child: Text(
-                    'Create without Video',
+                    'Create Video',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,

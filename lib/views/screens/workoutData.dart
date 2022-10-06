@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:workout_app/views/screens/Discover/discover.dart';
 import 'package:workout_app/views/screens/HomePage/home.dart';
 import 'package:workout_app/views/screens/InboxPage/inbox.dart';
@@ -29,51 +30,71 @@ class _WorkoutDataState extends State<WorkoutData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('WorkoutData'),
-          backgroundColor: Colors.black,
-        ),
-        body: Center(
-            child: Row(
-          children: [
-            NavigationRail(
-              selectedIndex: _selectedIndex,
-              groupAlignment: groupAligment,
-              onDestinationSelected: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
+      appBar: AppBar(
+        title: Text('WorkoutData'),
+        backgroundColor: Colors.black,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(CreateWorkout());
               },
-              labelType: labelType,
-              leading: Text('Excercises'),
-              trailing: FloatingActionButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CreateWorkout()));
-                },
-                child: const Icon(Icons.add),
-              ),
-              destinations: const <NavigationRailDestination>[
-                NavigationRailDestination(
-                  icon: Icon(Icons.favorite_border),
-                  selectedIcon: Icon(Icons.favorite),
-                  label: Text('Bench Press'),
+              icon: Icon(Icons.add_circle_rounded, size: 30)),
+        ],
+      ),
+      body: Row(
+        children: <Widget>[
+          LayoutBuilder(
+            builder: (context, constraint) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraint.maxHeight),
+                  child: IntrinsicHeight(
+                    child: NavigationRail(
+                      selectedIndex: _selectedIndex,
+                      onDestinationSelected: (int index) {
+                        setState(() {
+                          _selectedIndex = index;
+                        });
+                      },
+                      labelType: NavigationRailLabelType.selected,
+                      destinations: [
+                        NavigationRailDestination(
+                          icon: Icon(Icons.fitness_center_outlined),
+                          selectedIcon: Icon(Icons.fitness_center_outlined),
+                          label: Text('Bench Press'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.run_circle, size: 30),
+                          selectedIcon: Icon(Icons.run_circle, size: 30),
+                          label: Text('Running'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.directions_bike),
+                          selectedIcon: Icon(Icons.directions_bike),
+                          label: Text('Cycling'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.pool),
+                          selectedIcon: Icon(Icons.pool),
+                          label: Text('swimming'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.bookmark_border),
-                  selectedIcon: Icon(Icons.book),
-                  label: Text('Squats'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.star_border),
-                  selectedIcon: Icon(Icons.star),
-                  label: Text('Pull ups'),
-                ),
-              ],
+              );
+            },
+          ),
+          VerticalDivider(thickness: 1, width: 1),
+          // This is the main content.
+          Expanded(
+            child: Center(
+              child: Text('selectedIndex: $_selectedIndex'),
             ),
-            Expanded(child: buildPages()),
-          ],
-        )));
+          )
+        ],
+      ),
+    );
   }
 
   Widget buildPages() {

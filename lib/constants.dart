@@ -6,6 +6,7 @@ import 'package:workout_app/controllers/auth_controller.dart';
 import 'package:workout_app/views/screens/WorkoutPage/workout.dart';
 import 'package:workout_app/views/screens/add_video_screen.dart';
 import 'package:workout_app/views/screens/favouriteWorkouts.dart';
+import 'package:workout_app/views/screens/messages_screen.dart';
 import 'package:workout_app/views/screens/profile_screen.dart';
 import 'package:workout_app/views/screens/video_screen.dart';
 
@@ -13,7 +14,7 @@ List pages = [
   VideoScreen(),
   FavouriteWorkouts(),
   AddVideoScreen(),
-  Text('Messages'),
+  MessagesScreen(),
   ProfileScreen(uid: authController.user.uid),
 ];
 
