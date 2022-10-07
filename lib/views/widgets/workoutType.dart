@@ -23,7 +23,6 @@ class _WorkoutTypeState extends State<WorkoutType> {
           // This is called when the user selects an item.
           setState(() {
             dropdownValue = value!;
-            print(value);
           });
         },
         items: list.map<DropdownMenuItem<String>>((String value) {

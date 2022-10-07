@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:workout_app/providers/quick_workout_provider.dart';
 import 'dart:async';
 
-import 'package:workout_app/views/screens/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data_screen.dart';
 
 class BuildWorkoutTimer extends StatefulWidget {
   const BuildWorkoutTimer({Key? key}) : super(key: key);
@@ -11,7 +12,9 @@ class BuildWorkoutTimer extends StatefulWidget {
 }
 
 class _BuildWorkoutTimerState extends State<BuildWorkoutTimer> {
-  int timeLeft = 60;
+  QuickWorkoutProvider workoutProvider = QuickWorkoutProvider();
+
+  int timeLeft = 0;
   int set = 0;
   int seconds = 0, minutes = 0, hours = 0;
   String digitSeconds = "00", digitMinutes = "00", digitHours = "00";

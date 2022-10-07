@@ -6,7 +6,7 @@ import 'package:get/instance_manager.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/profile_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
-import 'package:workout_app/views/screens/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -175,6 +175,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                 ],
                               ),
+                              Container(
+                                color: Colors.black54,
+                                width: 1,
+                                height: 15,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    controller.user['favourites'],
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  const Text(
+                                    'Favourites',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                           const SizedBox(
@@ -233,6 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   imageUrl: thumbnail,
                                   fit: BoxFit.cover,
                                 ),
+                                onTap: () {},
                               );
                             },
                           )

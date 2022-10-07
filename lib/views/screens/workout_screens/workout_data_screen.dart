@@ -25,13 +25,6 @@ class _WorkoutDataState extends State<WorkoutData> {
       appBar: AppBar(
         title: Text('WorkoutData'),
         backgroundColor: Colors.black,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(WorkoutData());
-              },
-              icon: Icon(Icons.add_circle_rounded, size: 30)),
-        ],
       ),
       body: Row(
         children: <Widget>[

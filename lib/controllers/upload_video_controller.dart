@@ -54,6 +54,7 @@ class UploadVideoController extends GetxController {
         uid: uid,
         id: "Video $len",
         likes: [],
+        favourites: [],
         commentCount: 0,
         shareCount: 0,
         workoutType: workoutType,

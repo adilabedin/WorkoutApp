@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
-import 'package:workout_app/controllers/video_controller.dart';
-import 'package:workout_app/models/video.dart';
 
-class ProfileController extends GetxController {
+class FavouriteWorkoutsController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
   Map<String, dynamic> get user => _user.value;
 
@@ -17,26 +15,15 @@ class ProfileController extends GetxController {
 
   getUserData() async {
     List<String> thumbnails = [];
-    // List<String> videoUrls = [];
+
     var myVideos = await firestore
         .collection('videos')
-        .where('uid', isEqualTo: _uid.value)
+        .where('favourites', arrayContains: _uid.value)
         .get();
 
     for (int i = 0; i < myVideos.docs.length; i++) {
       thumbnails.add((myVideos.docs[i].data() as dynamic)['thumbnail']);
-      print('hello ' + thumbnails[i]);
     }
-
-    // var favVideos = await firestore
-    //     .collection('videos')
-    //     .where('favourites',arrayContains: _uid.value)
-    //     .get();
-
-    // for (int i = 0; i < favVideos.docs.length; i++) {
-    //   videoUrls.add((favVideos.docs[i].data() as dynamic)['videoUrl']);
-    //   print(videoUrls);
-    // }
 
     DocumentSnapshot userDoc =
         await firestore.collection('users').doc(_uid.value).get();
@@ -91,55 +78,7 @@ class ProfileController extends GetxController {
       'profilePhoto': profilePhoto,
       'name': name,
       'thumbnails': thumbnails,
-      // 'videoUrls': videoUrls,
     };
-    update();
-  }
-
-  followUser() async {
-    var doc = await firestore
-        .collection('users')
-        .doc(_uid.value)
-        .collection('followers')
-        .doc(authController.user.uid)
-        .get();
-
-    if (!doc.exists) {
-      await firestore
-          .collection('users')
-          .doc(_uid.value)
-          .collection('followers')
-          .doc(authController.user.uid)
-          .set({});
-      await firestore
-          .collection('users')
-          .doc(authController.user.uid)
-          .collection('following')
-          .doc(_uid.value)
-          .set({});
-      _user.value.update(
-        'followers',
-        (value) => (int.parse(value) + 1).toString(),
-      );
-    } else {
-      await firestore
-          .collection('users')
-          .doc(_uid.value)
-          .collection('followers')
-          .doc(authController.user.uid)
-          .delete();
-      await firestore
-          .collection('users')
-          .doc(authController.user.uid)
-          .collection('following')
-          .doc(_uid.value)
-          .delete();
-      _user.value.update(
-        'followers',
-        (value) => (int.parse(value) - 1).toString(),
-      );
-    }
-    _user.value.update('isFollowing', (value) => !value);
     update();
   }
 }

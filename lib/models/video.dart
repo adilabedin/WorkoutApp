@@ -5,6 +5,7 @@ class Video {
   String uid;
   String id;
   List likes;
+  List favourites;
   int commentCount;
   int shareCount;
   String workoutType;
@@ -22,6 +23,7 @@ class Video {
     required this.uid,
     required this.id,
     required this.likes,
+    required this.favourites,
     required this.commentCount,
     required this.shareCount,
     required this.workoutType,
@@ -41,6 +43,7 @@ class Video {
         "profilePhoto": profilePhoto,
         "id": id,
         "likes": likes,
+        "favourites": favourites,
         "commentCount": commentCount,
         "shareCount": shareCount,
         "workoutType": workoutType,
@@ -61,6 +64,7 @@ class Video {
       uid: snapshot['uid'],
       id: snapshot['id'],
       likes: snapshot['likes'],
+      favourites: snapshot['favourites'],
       commentCount: snapshot['commentCount'],
       shareCount: snapshot['shareCount'],
       workoutType: snapshot['workoutType'],

@@ -69,7 +69,7 @@ dev_dependencies:
   flutter_native_splash: ^2.0.1+1
 
 flutter_native_splash:
-  color: "#f5cb42"
+  color: "black"
   images: images/ronaldo.png
 
   # The "flutter_lints" package below contains a set of recommended lints to

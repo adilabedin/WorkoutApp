@@ -2,8 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/upload_video_controller.dart';
-import 'package:workout_app/views/widgets/buildDescription.dart';
-import 'package:workout_app/views/widgets/buildTitle.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
