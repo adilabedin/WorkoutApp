@@ -11,8 +11,8 @@ import 'package:workout_app/views/screens/workout_screens/workout_card_screen.da
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class FavouriteWorkoutVideoScreen extends StatelessWidget {
-  FavouriteWorkoutVideoScreen({Key? key}) : super(key: key);
-
+  FavouriteWorkoutVideoScreen({Key? key, required this.user}) : super(key: key);
+  String user;
   final VideoController videoController = Get.put(VideoController());
 
   buildProfile(String profilePhoto) {
@@ -68,7 +68,7 @@ class FavouriteWorkoutVideoScreen extends StatelessWidget {
             final data = videoController.videoList[index];
             return Stack(children: [
               VideoPlayerItem(
-                videoUrl: data.videoUrl,
+                videoUrl: user,
               ),
               Column(children: [
                 const SizedBox(

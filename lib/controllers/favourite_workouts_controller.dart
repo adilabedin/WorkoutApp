@@ -13,8 +13,11 @@ class FavouriteWorkoutsController extends GetxController {
     getUserData();
   }
 
+  getVideo() {}
+
   getUserData() async {
     List<String> thumbnails = [];
+    List<String> videoUrls = [];
 
     var myVideos = await firestore
         .collection('videos')
@@ -23,6 +26,10 @@ class FavouriteWorkoutsController extends GetxController {
 
     for (int i = 0; i < myVideos.docs.length; i++) {
       thumbnails.add((myVideos.docs[i].data() as dynamic)['thumbnail']);
+    }
+
+    for (int i = 0; i < myVideos.docs.length; i++) {
+      videoUrls.add((myVideos.docs[i].data() as dynamic)['videoUrl']);
     }
 
     DocumentSnapshot userDoc =
@@ -78,6 +85,7 @@ class FavouriteWorkoutsController extends GetxController {
       'profilePhoto': profilePhoto,
       'name': name,
       'thumbnails': thumbnails,
+      'videoUrls': videoUrls,
     };
     update();
   }

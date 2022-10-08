@@ -103,7 +103,9 @@ class _FavouriteWorkoutsScreenState extends State<FavouriteWorkoutsScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return FavouriteWorkoutVideoScreen();
+                                        return FavouriteWorkoutVideoScreen(
+                                            user: controller.user['videoUrls']
+                                                [index]);
                                       },
                                     ),
                                   );
