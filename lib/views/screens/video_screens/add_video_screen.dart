@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/upload_video_controller.dart';
-import 'package:workout_app/views/screens/confirm_screen.dart';
+import 'package:workout_app/views/screens/video_screens/confirm_screen.dart';
 import 'package:get/get.dart';
 
 class AddVideoScreen extends StatelessWidget {

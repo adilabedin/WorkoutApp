@@ -6,6 +6,7 @@ import 'package:workout_app/controllers/favourite_workouts_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
 import 'package:workout_app/views/screens/comment_screen.dart';
 import 'package:workout_app/views/screens/search_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/quick_workout_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_card_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
@@ -187,34 +188,47 @@ class FavouriteWorkoutVideoScreen extends StatelessWidget {
                                   onTap: () => showDialog(
                                       context: context,
                                       builder: ((context) => AlertDialog(
-                                            title: Text(data.title),
+                                            title: Text(data.workoutType),
                                             content: Column(
                                               children: [
-                                                Text(data.workoutType),
+                                                Text(data.title),
+                                                SizedBox(height: 20),
                                                 Text(data.description),
+                                                SizedBox(height: 20),
                                                 Row(
                                                   children: [
-                                                    Text(data.sets),
-                                                    Text(data.reps),
-                                                    Text(data.time),
+                                                    Text(data.sets + ' SETS'),
+                                                    SizedBox(width: 12),
+                                                    Text(data.reps + ' REPS'),
+                                                    SizedBox(width: 12),
+                                                    Text(data.time +
+                                                        ' Rest Time'),
                                                   ],
                                                 )
                                               ],
                                             ),
                                             actions: [
-                                              InkWell(
-                                                onTap: () => videoController
-                                                    .likeVideo(data.id),
-                                                child: Icon(
-                                                  Icons.fitness_center_outlined,
-                                                  size: 40,
-                                                  color: data.likes.contains(
-                                                          authController
-                                                              .user.uid)
-                                                      ? Colors.red
-                                                      : Colors.white,
-                                                ),
-                                              ),
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) {
+                                                          return QuickWorkoutScreen(
+                                                              workoutName:
+                                                                  data.title,
+                                                              description: data
+                                                                  .description,
+                                                              sets: data.sets,
+                                                              reps: data.reps,
+                                                              restTime:
+                                                                  int.parse(data
+                                                                      .time));
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Text('Try Workout')),
                                             ],
                                           ))),
                                   child: const Icon(

@@ -28,16 +28,6 @@ class ProfileController extends GetxController {
       print('hello ' + thumbnails[i]);
     }
 
-    // var favVideos = await firestore
-    //     .collection('videos')
-    //     .where('favourites',arrayContains: _uid.value)
-    //     .get();
-
-    // for (int i = 0; i < favVideos.docs.length; i++) {
-    //   videoUrls.add((favVideos.docs[i].data() as dynamic)['videoUrl']);
-    //   print(videoUrls);
-    // }
-
     DocumentSnapshot userDoc =
         await firestore.collection('users').doc(_uid.value).get();
     final userData = userDoc.data()! as dynamic;
@@ -91,7 +81,6 @@ class ProfileController extends GetxController {
       'profilePhoto': profilePhoto,
       'name': name,
       'thumbnails': thumbnails,
-      // 'videoUrls': videoUrls,
     };
     update();
   }
