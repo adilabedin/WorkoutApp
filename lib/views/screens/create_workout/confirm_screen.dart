@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/upload_video_controller.dart';
+import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
@@ -77,10 +78,13 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     width: MediaQuery.of(context).size.width - 20,
                     child: TextInputField(
-                      controller: _workoutTypeController,
-                      labelText: 'Workout Type',
-                      icon: Icons.music_note,
-                    ),
+                        controller: _workoutTypeController,
+                        labelText: 'Workout Type',
+                        icon: Icons.music_note,
+                        lines: 1),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -89,6 +93,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       controller: _titleController,
                       labelText: 'Workout Name',
                       icon: Icons.music_note,
+                      lines: 1,
                     ),
                   ),
                   const SizedBox(
@@ -101,6 +106,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       controller: _descriptionController,
                       labelText: 'description',
                       icon: Icons.closed_caption,
+                      lines: null,
                     ),
                   ),
                   const SizedBox(
@@ -118,16 +124,17 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                           controller: _setController,
                           labelText: 'Sets',
                           icon: Icons.closed_caption,
+                          lines: 1,
                         ),
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         width: 100,
                         child: TextInputField(
-                          controller: _repController,
-                          labelText: 'Reps',
-                          icon: Icons.music_note,
-                        ),
+                            controller: _repController,
+                            labelText: 'Reps',
+                            icon: Icons.music_note,
+                            lines: 1),
                       ),
                       const SizedBox(
                         height: 10,
@@ -139,20 +146,24 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                           controller: _timeController,
                           labelText: 'time',
                           icon: Icons.closed_caption,
+                          lines: 1,
                         ),
                       ),
                       const SizedBox(width: 24),
                     ],
                   ),
                   ElevatedButton(
-                      onPressed: () => uploadVideoController.uploadVideo(
-                          _workoutTypeController.text,
-                          _titleController.text,
-                          _descriptionController.text,
-                          _setController.text,
-                          _repController.text,
-                          _timeController.text,
-                          widget.videoPath),
+                      onPressed: () {
+                        uploadVideoController.uploadVideo(
+                            _workoutTypeController.text,
+                            _titleController.text,
+                            _descriptionController.text,
+                            _setController.text,
+                            _repController.text,
+                            _timeController.text,
+                            widget.videoPath);
+                        Get.to(() => VideoScreen());
+                      },
                       child: const Text(
                         'Share!',
                         style: TextStyle(

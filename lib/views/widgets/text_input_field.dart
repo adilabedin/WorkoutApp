@@ -6,18 +6,22 @@ class TextInputField extends StatelessWidget {
   final String labelText;
   final bool isObscure;
   final IconData icon;
+  final int? lines;
   const TextInputField({
     Key? key,
     required this.controller,
     required this.labelText,
     this.isObscure = false,
     required this.icon,
+    required this.lines,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      keyboardType: TextInputType.multiline,
+      maxLines: lines,
       decoration: InputDecoration(
         labelText: labelText,
         prefixIcon: Icon(icon),

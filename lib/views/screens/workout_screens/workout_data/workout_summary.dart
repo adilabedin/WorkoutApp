@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:workout_app/views/screens/video_screens/video_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data_screen.dart';
+import 'package:get/get.dart';
+import 'package:workout_app/controllers/workout_data_controller.dart';
+import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
+import 'package:workout_app/views/widgets/workoutType.dart';
 
 class WorkoutSummary extends StatelessWidget {
   WorkoutSummary({
@@ -22,6 +25,11 @@ class WorkoutSummary extends StatelessWidget {
   final String reps;
   int restTime;
 
+  final String workoutType = "Weight-Training";
+
+  WorkoutDataController workoutDataController =
+      Get.put(WorkoutDataController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +42,7 @@ class WorkoutSummary extends StatelessWidget {
       body: Center(
           child: Column(
         children: [
+          Text(workoutType),
           Text(workoutName),
           Text(description),
           Text(workoutTime),
@@ -44,11 +53,13 @@ class WorkoutSummary extends StatelessWidget {
             children: [
               ElevatedButton(
                   onPressed: () {
+                    workoutDataController.saveWorkout(workoutType, workoutName,
+                        description, sets, reps, restTime, workoutTime);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return WorkoutData();
+                          return const WorkoutData();
                         },
                       ),
                     );

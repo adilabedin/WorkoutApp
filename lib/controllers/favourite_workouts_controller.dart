@@ -2,9 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
 
+import '../models/video.dart';
+
 class FavouriteWorkoutsController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
   Map<String, dynamic> get user => _user.value;
+  final Rx<List<Video>> _favList = Rx<List<Video>>([]);
+  List<Video> get favList => _favList.value;
 
   Rx<String> _uid = "".obs;
 
@@ -13,7 +17,24 @@ class FavouriteWorkoutsController extends GetxController {
     getUserData();
   }
 
-  getVideo() {}
+  @override
+  void onInit() {
+    super.onInit();
+    var uid = authController.user.uid;
+    _favList.bindStream(firestore
+        .collection('videos')
+        .where('favourites', arrayContains: uid)
+        .snapshots()
+        .map((QuerySnapshot query) {
+      List<Video> retVal = [];
+      for (var element in query.docs) {
+        retVal.add(
+          Video.fromSnap(element),
+        );
+      }
+      return retVal;
+    }));
+  }
 
   getUserData() async {
     List<String> thumbnails = [];

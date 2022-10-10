@@ -9,10 +9,10 @@ import 'package:workout_app/controllers/profile_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 import 'package:workout_app/views/screens/messages_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/favourite_workout_video_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/myForm.dart';
-import 'package:workout_app/views/screens/video_screens/video_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workout_video_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_form.dart';
+import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class FavouriteWorkoutsScreen extends StatefulWidget {
@@ -71,7 +71,7 @@ class _FavouriteWorkoutsScreenState extends State<FavouriteWorkoutsScreen> {
                             children: [
                               ElevatedButton(
                                   onPressed: () {
-                                    Get.to(MyForm());
+                                    Get.to(() => MyForm());
                                   },
                                   child: Text('Quick Workout'))
                             ],
@@ -93,6 +93,8 @@ class _FavouriteWorkoutsScreenState extends State<FavouriteWorkoutsScreen> {
                             itemBuilder: (context, index) {
                               String thumbnail =
                                   controller.user['thumbnails'][index];
+                              String videoUrls =
+                                  controller.user['videoUrls'][index];
                               return InkWell(
                                 child: CachedNetworkImage(
                                   imageUrl: thumbnail,
@@ -104,8 +106,9 @@ class _FavouriteWorkoutsScreenState extends State<FavouriteWorkoutsScreen> {
                                     MaterialPageRoute(
                                       builder: (context) {
                                         return FavouriteWorkoutVideoScreen(
-                                            user: controller.user['videoUrls']
-                                                [index]);
+                                          videoUrl: videoUrls,
+                                          index: index,
+                                        );
                                       },
                                     ),
                                   );

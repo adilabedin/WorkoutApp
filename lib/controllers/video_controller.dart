@@ -51,19 +51,7 @@ class VideoController extends GetxController {
       await firestore.collection('videos').doc(id).update({
         'favourites': FieldValue.arrayUnion([uid]),
       });
-      _favList.bindStream(firestore
-          .collection('videos')
-          .where('favourites', arrayContains: uid)
-          .snapshots()
-          .map((QuerySnapshot query) {
-        List<Video> retVal = [];
-        for (var element in query.docs) {
-          retVal.add(
-            Video.fromSnap(element),
-          );
-        }
-        return retVal;
-      }));
     }
+    ;
   }
 }

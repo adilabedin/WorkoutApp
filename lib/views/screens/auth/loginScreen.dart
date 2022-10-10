@@ -42,6 +42,7 @@ class LoginScreen extends StatelessWidget {
                 controller: _emailController,
                 labelText: 'Email',
                 icon: Icons.email,
+                lines: 1,
               ),
             ),
             const SizedBox(
@@ -51,11 +52,11 @@ class LoginScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
-                controller: _passwordController,
-                labelText: 'Password',
-                icon: Icons.lock,
-                isObscure: true,
-              ),
+                  controller: _passwordController,
+                  labelText: 'Password',
+                  icon: Icons.lock,
+                  isObscure: true,
+                  lines: 1),
             ),
             const SizedBox(
               height: 30,

@@ -6,7 +6,7 @@ import 'package:get/instance_manager.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/profile_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -218,7 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: InkWell(
                                 onTap: () {
                                   if (widget.uid == authController.user.uid) {
-                                    Get.to(WorkoutData());
+                                    Get.to(() => WorkoutData());
                                   } else {
                                     controller.followUser();
                                   }

@@ -8,7 +8,7 @@ import 'package:workout_app/models/user.dart' as model;
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/views/screens/auth/loginScreen.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
-import 'package:workout_app/views/screens/video_screens/video_screen.dart';
+import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
