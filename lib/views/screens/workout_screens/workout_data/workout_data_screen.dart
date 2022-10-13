@@ -3,16 +3,21 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
+import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 
 class WorkoutData extends StatefulWidget {
-  const WorkoutData({Key? key}) : super(key: key);
+  const WorkoutData({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<WorkoutData> createState() => _WorkoutDataState();
 }
 
 class _WorkoutDataState extends State<WorkoutData> {
+  final WorkoutDataController dataController = Get.put(WorkoutDataController());
+
   int index = 0;
   NavigationRailLabelType labelType = NavigationRailLabelType.all;
   bool showLeading = true;
@@ -22,7 +27,15 @@ class _WorkoutDataState extends State<WorkoutData> {
   bool isClicked = false;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    dataController.getWorkoutData();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final data = dataController.workouts[0];
     return Scaffold(
       appBar: AppBar(
         title: Text('WorkoutData'),
@@ -45,7 +58,7 @@ class _WorkoutDataState extends State<WorkoutData> {
                         NavigationRailDestination(
                           icon: Icon(Icons.fitness_center_outlined),
                           selectedIcon: Icon(Icons.fitness_center_outlined),
-                          label: Text('Bench Press'),
+                          label: Text(data.workoutTime.toString()),
                         ),
                         NavigationRailDestination(
                           icon: Icon(Icons.run_circle, size: 30),

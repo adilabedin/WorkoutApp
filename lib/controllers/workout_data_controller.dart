@@ -7,6 +7,29 @@ import 'package:workout_app/models/weight_training.dart';
 import 'package:workout_app/models/workout_data_model.dart';
 
 class WorkoutDataController extends GetxController {
+  final Rx<List<WeightTraining>> _WeightTrainingWorkout =
+      Rx<List<WeightTraining>>([]);
+  List<WeightTraining> get workouts => _WeightTrainingWorkout.value;
+
+  @override
+  void getWorkoutData() async {
+    String uid = firebaseAuth.currentUser!.uid;
+    _WeightTrainingWorkout.bindStream(firestore
+        .collection('users')
+        .doc(uid)
+        .collection('Weight-Training')
+        .doc('Bench Press')
+        .collection('Workout History')
+        .snapshots()
+        .map((QuerySnapshot query) {
+      List<WeightTraining> retVal = [];
+      for (var elem in query.docs) {
+        retVal.add(WeightTraining.fromSnap(elem));
+      }
+      return retVal;
+    }));
+  }
+
   saveWorkout(String workoutType, String title, String description) async {
     try {
       String uid = firebaseAuth.currentUser!.uid;

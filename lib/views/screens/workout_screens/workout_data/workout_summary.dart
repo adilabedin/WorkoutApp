@@ -111,11 +111,12 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
                         widget.restTime,
                         int.parse(_workoutWeightUsed.text),
                         widget.workoutTime);
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const WorkoutData();
+                          return WorkoutData();
                         },
                       ),
                     );
