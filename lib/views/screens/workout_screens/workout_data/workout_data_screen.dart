@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:workout_app/constants.dart';
+import 'package:workout_app/views/screens/home_screen.dart';
 
 class WorkoutData extends StatefulWidget {
   const WorkoutData({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class WorkoutData extends StatefulWidget {
 }
 
 class _WorkoutDataState extends State<WorkoutData> {
-  int _selectedIndex = 0;
+  int index = 0;
   NavigationRailLabelType labelType = NavigationRailLabelType.all;
   bool showLeading = true;
   bool showTrailing = true;
@@ -35,12 +37,9 @@ class _WorkoutDataState extends State<WorkoutData> {
                   constraints: BoxConstraints(minHeight: constraint.maxHeight),
                   child: IntrinsicHeight(
                     child: NavigationRail(
-                      selectedIndex: _selectedIndex,
-                      onDestinationSelected: (int index) {
-                        setState(() {
-                          _selectedIndex = index;
-                        });
-                      },
+                      selectedIndex: index,
+                      onDestinationSelected: (int index) =>
+                          setState(() => this.index = index),
                       labelType: NavigationRailLabelType.selected,
                       destinations: [
                         NavigationRailDestination(
@@ -63,6 +62,11 @@ class _WorkoutDataState extends State<WorkoutData> {
                           selectedIcon: Icon(Icons.pool),
                           label: Text('swimming'),
                         ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.pool),
+                          selectedIcon: Icon(Icons.pool),
+                          label: Text('swimming'),
+                        ),
                       ],
                     ),
                   ),
@@ -74,7 +78,7 @@ class _WorkoutDataState extends State<WorkoutData> {
           // This is the main content.
           Expanded(
             child: Center(
-              child: Text('selectedIndex: $_selectedIndex'),
+              child: buildPages(),
             ),
           )
         ],
@@ -83,15 +87,6 @@ class _WorkoutDataState extends State<WorkoutData> {
   }
 
   Widget buildPages() {
-    switch (_selectedIndex) {
-      case 0:
-        return WorkoutData();
-      case 1:
-        return WorkoutData();
-      case 2:
-        return WorkoutData();
-      default:
-        return WorkoutData();
-    }
+    return pages[index]; //change this
   }
 }

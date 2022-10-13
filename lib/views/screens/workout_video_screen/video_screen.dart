@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/video_controller.dart';
+import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/workout_video_screen/workout_interaction/video_info.dart';
 import 'package:workout_app/views/screens/search_screen.dart';
 import 'package:workout_app/views/screens/workout_video_screen/workout_interaction/comments/comments_link.dart';
@@ -14,6 +15,8 @@ class VideoScreen extends StatelessWidget {
   VideoScreen({Key? key}) : super(key: key);
 
   final VideoController videoController = Get.put(VideoController());
+  final WorkoutDataController workoutController =
+      Get.put(WorkoutDataController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class VideoScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
@@ -64,8 +68,12 @@ class VideoScreen extends StatelessWidget {
                             LikeWorkout(
                                 videoController: videoController, data: data),
                             FavouriteWorkout(
-                                videoController: videoController, data: data),
-                            WorkoutDetails(data: data),
+                                videoController: videoController,
+                                data: data,
+                                workoutController: workoutController),
+                            WorkoutDetails(
+                                data: data,
+                                workoutController: workoutController),
                             Comments_Link(data: data),
                           ],
                         ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/favourite_workouts_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
+import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/workout_video_screen/workout_interaction/comments/comment_screen.dart';
 import 'package:workout_app/views/screens/search_screen.dart';
 import 'package:workout_app/views/screens/workout_video_screen/workout_interaction/comments/comments_link.dart';
@@ -21,8 +22,8 @@ class FavouriteWorkoutVideoScreen extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final FavouriteWorkoutsController favouriteWorkoutsController =
-      Get.put(FavouriteWorkoutsController());
+  final WorkoutDataController favouriteWorkoutsController =
+      Get.put(WorkoutDataController());
   final FavouriteWorkoutsController videoController =
       Get.put(FavouriteWorkoutsController());
   final String videoUrl;
@@ -73,7 +74,10 @@ class FavouriteWorkoutVideoScreen extends StatelessWidget {
                             //     videoController: videoController, data: data),
                             // FavouriteWorkout(
                             //     videoController: videoController, data: data),
-                            WorkoutDetails(data: data),
+                            WorkoutDetails(
+                              data: data,
+                              workoutController: favouriteWorkoutsController,
+                            ),
                             Comments_Link(data: data),
                           ],
                         ),

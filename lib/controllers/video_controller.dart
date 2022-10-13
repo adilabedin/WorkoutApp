@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
+import 'package:workout_app/controllers/workout_data_controller.dart';
 
 import 'package:workout_app/models/user.dart';
 import 'package:workout_app/models/video.dart';
@@ -10,6 +11,8 @@ class VideoController extends GetxController {
   final Rx<List<Video>> _favList = Rx<List<Video>>([]);
   List<Video> get videoList => _videoList.value;
   List<Video> get favList => _favList.value;
+  final WorkoutDataController workoutDataController =
+      Get.put(WorkoutDataController());
 
   @override
   void onInit() {
@@ -40,7 +43,8 @@ class VideoController extends GetxController {
     }
   }
 
-  favouriteVideo(String id) async {
+  favouriteVideo(
+      String id, String workoutType, String title, String description) async {
     DocumentSnapshot doc = await firestore.collection('videos').doc(id).get();
     var uid = authController.user.uid;
     if ((doc.data()! as dynamic)['favourites'].contains(uid)) {
@@ -51,7 +55,7 @@ class VideoController extends GetxController {
       await firestore.collection('videos').doc(id).update({
         'favourites': FieldValue.arrayUnion([uid]),
       });
+      workoutDataController.saveWorkout(workoutType, title, description);
     }
-    ;
   }
 }

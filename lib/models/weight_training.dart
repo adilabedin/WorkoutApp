@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Workout {
+class WeightTraining {
   String uid;
   String id;
   String workoutType;
@@ -9,9 +9,10 @@ class Workout {
   String sets;
   String reps;
   int restTime;
+  int workoutWeight;
   String workoutTime;
 
-  Workout({
+  WeightTraining({
     required this.uid,
     required this.id,
     required this.workoutType,
@@ -20,6 +21,7 @@ class Workout {
     required this.sets,
     required this.reps,
     required this.restTime,
+    required this.workoutWeight,
     required this.workoutTime,
   });
 
@@ -32,13 +34,14 @@ class Workout {
         "sets": sets,
         "reps": reps,
         "restTime": restTime,
+        "workoutWeight": workoutWeight,
         "workoutTime": workoutTime
       };
 
-  static Workout fromSnap(DocumentSnapshot snap) {
+  static WeightTraining fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
-    return Workout(
+    return WeightTraining(
         uid: snapshot['uid'],
         id: snapshot['id'],
         workoutType: snapshot['workoutType'],
@@ -47,6 +50,7 @@ class Workout {
         sets: snapshot['sets'],
         reps: snapshot['reps'],
         restTime: snapshot['restTime'],
+        workoutWeight: snapshot['workoutWeight'],
         workoutTime: snapshot['workoutTime']);
   }
 }
