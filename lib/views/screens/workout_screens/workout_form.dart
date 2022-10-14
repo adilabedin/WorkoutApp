@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:path/path.dart';
 import 'package:workout_app/views/screens/workout_screens/quick_workout_screen.dart';
+import 'package:workout_app/views/widgets/workoutType.dart';
 
 class MyForm extends StatefulWidget {
   const MyForm({super.key});
@@ -69,6 +70,7 @@ class _MyFormState extends State<MyForm> {
         padding: EdgeInsets.all(20),
         child: ListView(
           children: [
+            WorkoutType(),
             TextFormField(
               controller: _titleController,
               decoration: InputDecoration(

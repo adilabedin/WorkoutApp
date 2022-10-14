@@ -19,14 +19,6 @@ List pages = [
   ProfileScreen(uid: authController.user.uid),
 ];
 
-List pages2 = [
-  WorkoutDataDynamicScreen(),
-  FavouriteWorkoutsScreen(uid: authController.user.uid),
-  AddWorkoutScreen(),
-  MessagesScreen(),
-  ProfileScreen(uid: authController.user.uid),
-];
-
 // COLORS
 const backgroundColor = Colors.black;
 var buttonColor = Colors.blue;

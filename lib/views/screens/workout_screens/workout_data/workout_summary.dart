@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/alt_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
@@ -83,7 +84,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
             child: TextFormField(
               controller: _workoutWeightUsed,
               decoration: InputDecoration(
-                hintText: 'Sets...',
+                hintText: '',
                 hintStyle: TextStyle(color: Colors.blue),
                 filled: true,
                 fillColor: Colors.black,
@@ -98,21 +99,43 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    workoutDataController.saveWorkout(
-                        widget.workoutType,
-                        widget.workoutName,
-                        widget.description,
-                        widget.sets,
-                        widget.reps,
-                        widget.restTime,
-                        int.parse(_workoutWeightUsed.text),
-                        widget.workoutTime);
-
+                    // workoutDataController.saveWorkout(widget.workoutType,
+                    //     widget.workoutName, widget.description);
+                    if (widget.workoutType == 'Weight-Training') {
+                      workoutDataController.saveWeightTrainingSummary(
+                          widget.workoutType,
+                          widget.workoutName,
+                          widget.description,
+                          widget.sets,
+                          widget.reps,
+                          widget.restTime,
+                          int.parse(_workoutWeightUsed.text),
+                          widget.workoutTime);
+                    } else if (widget.workoutType == 'cardio') {
+                      workoutDataController.saveCardioSummary(
+                          widget.workoutType,
+                          widget.workoutName,
+                          widget.description,
+                          widget.sets,
+                          widget.reps,
+                          widget.restTime,
+                          widget.workoutTime);
+                    } else if (widget.workoutType == 'Body-Weight-Training') {
+                      workoutDataController.saveBodyWeightSummary(
+                          widget.workoutType,
+                          widget.workoutName,
+                          widget.description,
+                          widget.sets,
+                          widget.reps,
+                          widget.restTime,
+                          int.parse(_workoutWeightUsed.text),
+                          widget.workoutTime);
+                    }
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return WorkoutDataScreen();
+                          return UsedWorkoutData();
                         },
                       ),
                     );
