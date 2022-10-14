@@ -8,10 +8,19 @@ import 'package:workout_app/views/screens/workout_screens/favourite_workouts/fav
 import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workouts_screen.dart';
 import 'package:workout_app/views/screens/messages_screen.dart';
 import 'package:workout_app/views/screens/profile_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_dynamic_screen.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 
 List pages = [
   VideoScreen(),
+  FavouriteWorkoutsScreen(uid: authController.user.uid),
+  AddWorkoutScreen(),
+  MessagesScreen(),
+  ProfileScreen(uid: authController.user.uid),
+];
+
+List pages2 = [
+  WorkoutDataDynamicScreen(),
   FavouriteWorkoutsScreen(uid: authController.user.uid),
   AddWorkoutScreen(),
   MessagesScreen(),

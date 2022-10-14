@@ -6,16 +6,16 @@ import 'package:workout_app/constants.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 
-class WorkoutData extends StatefulWidget {
-  const WorkoutData({
+class WorkoutDataScreen extends StatefulWidget {
+  const WorkoutDataScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<WorkoutData> createState() => _WorkoutDataState();
+  State<WorkoutDataScreen> createState() => _WorkoutDataScreenState();
 }
 
-class _WorkoutDataState extends State<WorkoutData> {
+class _WorkoutDataScreenState extends State<WorkoutDataScreen> {
   final WorkoutDataController dataController = Get.put(WorkoutDataController());
 
   int index = 0;
@@ -25,13 +25,6 @@ class _WorkoutDataState extends State<WorkoutData> {
   double groupAligment = -1.0;
 
   bool isClicked = false;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    dataController.getWorkoutData();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +93,6 @@ class _WorkoutDataState extends State<WorkoutData> {
   }
 
   Widget buildPages() {
-    return pages[index]; //change this
+    return pages2[index]; //change this
   }
 }

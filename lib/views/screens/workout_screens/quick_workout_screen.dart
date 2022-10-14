@@ -5,10 +5,12 @@ import 'dart:async';
 
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_summary.dart';
+import 'package:workout_app/views/widgets/workoutType.dart';
 
 class QuickWorkoutScreen extends StatefulWidget {
   QuickWorkoutScreen(
       {Key? key,
+      required this.workoutType,
       required this.workoutName,
       required this.description,
       required this.sets,
@@ -16,6 +18,7 @@ class QuickWorkoutScreen extends StatefulWidget {
       required this.restTime})
       : super(key: key);
 
+  final String workoutType;
   final String workoutName;
   final String description;
   final String sets;
@@ -27,6 +30,7 @@ class QuickWorkoutScreen extends StatefulWidget {
 }
 
 class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
+  var workoutType;
   var workoutName;
   var description;
   var sets;
@@ -37,12 +41,20 @@ class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
   @override
   void initState() {
     super.initState();
+    workoutType = _WorkoutType(workoutType);
     workoutName = _WorkoutName(workoutName);
     description = _description(description);
     sets = _sets(sets);
     reps = _reps(reps);
     timeLeft = _updateTimeLeft(timeLeft);
     conRestTime = _ConstantRestTime(conRestTime);
+  }
+
+  _WorkoutType(workoutType) {
+    setState(() {
+      workoutType = widget.workoutType;
+    });
+    return workoutType;
   }
 
   _WorkoutName(workoutName) {
@@ -125,6 +137,7 @@ class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
                       MaterialPageRoute(
                         builder: (context) {
                           return WorkoutSummary(
+                              workoutType: workoutType,
                               workoutName: workoutName,
                               description: description,
                               workoutTime: workoutTime,

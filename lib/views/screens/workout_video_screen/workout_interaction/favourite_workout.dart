@@ -24,7 +24,8 @@ class FavouriteWorkout extends StatelessWidget {
       children: [
         InkWell(
           onTap: () => videoController.favouriteVideo(
-              data.id, data.workoutType, data.title, data.description),
+            data.id,
+          ),
           child: Icon(
             Icons.favorite,
             size: 40,

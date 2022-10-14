@@ -44,6 +44,7 @@ class WorkoutDetails extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) {
                                   return QuickWorkoutScreen(
+                                      workoutType: data.workoutType,
                                       workoutName: data.title,
                                       description: data.description,
                                       sets: data.sets,

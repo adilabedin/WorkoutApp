@@ -43,8 +43,7 @@ class VideoController extends GetxController {
     }
   }
 
-  favouriteVideo(
-      String id, String workoutType, String title, String description) async {
+  favouriteVideo(String id) async {
     DocumentSnapshot doc = await firestore.collection('videos').doc(id).get();
     var uid = authController.user.uid;
     if ((doc.data()! as dynamic)['favourites'].contains(uid)) {
@@ -55,7 +54,6 @@ class VideoController extends GetxController {
       await firestore.collection('videos').doc(id).update({
         'favourites': FieldValue.arrayUnion([uid]),
       });
-      workoutDataController.saveWorkout(workoutType, title, description);
     }
   }
 }

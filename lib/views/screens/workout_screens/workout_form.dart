@@ -12,12 +12,14 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
+  var _workoutType;
   var _title;
   var _description;
   var _sets;
   var _reps;
   var _restTime;
 
+  final _workoutTypeController = TextEditingController();
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _setController = TextEditingController();
@@ -27,7 +29,7 @@ class _MyFormState extends State<MyForm> {
   @override
   void initState() {
     super.initState();
-
+    _workoutTypeController.addListener(_updateText);
     _titleController.addListener(_updateText);
     _descriptionController.addListener(_updateText);
     _setController.addListener(_updateText);
@@ -37,6 +39,7 @@ class _MyFormState extends State<MyForm> {
 
   @override
   void dispose() {
+    _workoutTypeController.dispose();
     _titleController.dispose();
     _descriptionController.dispose();
     _setController.dispose();
@@ -46,6 +49,7 @@ class _MyFormState extends State<MyForm> {
 
   void _updateText() {
     setState(() {
+      _workoutType = _workoutTypeController.text;
       _title = _titleController.text;
       _description = _descriptionController.text;
       _sets = _setController.text;
@@ -65,6 +69,11 @@ class _MyFormState extends State<MyForm> {
         padding: EdgeInsets.all(20),
         child: ListView(
           children: [
+            TextFormField(
+              controller: _titleController,
+              decoration: InputDecoration(
+                  labelText: 'Workout Name', border: OutlineInputBorder()),
+            ),
             TextFormField(
               controller: _titleController,
               decoration: InputDecoration(
@@ -146,6 +155,7 @@ class _MyFormState extends State<MyForm> {
                   MaterialPageRoute(
                     builder: (context) {
                       return QuickWorkoutScreen(
+                          workoutType: _workoutTypeController.text,
                           workoutName: _titleController.text,
                           description: _descriptionController.text,
                           sets: _setController.text,

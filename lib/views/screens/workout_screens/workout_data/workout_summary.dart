@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/alt_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
@@ -11,6 +12,7 @@ import 'package:workout_app/views/widgets/workoutType.dart';
 class WorkoutSummary extends StatefulWidget {
   WorkoutSummary({
     Key? key,
+    required this.workoutType,
     required this.workoutName,
     required this.description,
     required this.workoutTime,
@@ -19,6 +21,7 @@ class WorkoutSummary extends StatefulWidget {
     required this.restTime,
   }) : super(key: key);
 
+  final String workoutType;
   final String workoutName;
   final String description;
   final String workoutTime;
@@ -53,8 +56,6 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
     });
   }
 
-  final String workoutType = "Weight-Training";
-
   WorkoutDataController workoutDataController =
       Get.put(WorkoutDataController());
 
@@ -70,7 +71,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
       body: Center(
           child: Column(
         children: [
-          Text(workoutType),
+          Text(widget.workoutType),
           Text(widget.workoutName),
           Text(widget.description),
           Text(widget.workoutTime),
@@ -98,12 +99,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
               ElevatedButton(
                   onPressed: () {
                     workoutDataController.saveWorkout(
-                      workoutType,
-                      widget.workoutName,
-                      widget.description,
-                    );
-                    workoutDataController.saveWorkoutSummary(
-                        workoutType,
+                        widget.workoutType,
                         widget.workoutName,
                         widget.description,
                         widget.sets,
@@ -116,7 +112,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return WorkoutData();
+                          return WorkoutDataScreen();
                         },
                       ),
                     );
