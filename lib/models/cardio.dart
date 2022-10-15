@@ -6,8 +6,8 @@ class Cardio {
   String workoutType;
   String title;
   String description;
-  String laps;
-  String lapDistance;
+  int laps;
+  int lapDistance;
   int restTime;
   String workoutTime;
 

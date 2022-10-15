@@ -160,8 +160,8 @@ class _MyFormState extends State<MyForm> {
                           workoutType: _workoutTypeController.text,
                           workoutName: _titleController.text,
                           description: _descriptionController.text,
-                          sets: _setController.text,
-                          reps: _repController.text,
+                          sets: int.parse(_setController.text),
+                          reps: int.parse(_repController.text),
                           restTime: int.parse(_restTimeController.text));
                     },
                   ),

@@ -69,8 +69,8 @@ class WorkoutDataController extends GetxController {
       String workoutType,
       String title,
       String description,
-      String sets,
-      String reps,
+      int sets,
+      int reps,
       int restTime,
       int workoutWeight,
       String workoutTime) async {
@@ -116,8 +116,8 @@ class WorkoutDataController extends GetxController {
       String workoutType,
       String title,
       String description,
-      String sets,
-      String reps,
+      int sets,
+      int reps,
       int restTime,
       int workoutWeight,
       String workoutTime) async {
@@ -160,7 +160,7 @@ class WorkoutDataController extends GetxController {
   }
 
   saveCardioSummary(String workoutType, String title, String description,
-      String lapDistance, String laps, int restTime, String workoutTime) async {
+      int lapDistance, int laps, int restTime, String workoutTime) async {
     try {
       String uid = firebaseAuth.currentUser!.uid;
       var allDocs = await firestore

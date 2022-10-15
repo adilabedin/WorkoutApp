@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
+import 'package:workout_app/views/screens/home_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/alt_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
@@ -26,8 +27,8 @@ class WorkoutSummary extends StatefulWidget {
   final String workoutName;
   final String description;
   final String workoutTime;
-  final String sets;
-  final String reps;
+  final int sets;
+  final int reps;
   int restTime;
 
   @override
@@ -76,8 +77,9 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
           Text(widget.workoutName),
           Text(widget.description),
           Text(widget.workoutTime),
-          Text(widget.sets),
-          Text(widget.reps),
+          Text(widget.sets.toString()),
+          Text(widget.reps.toString()),
+          Text(widget.restTime.toString()),
           SizedBox(
             width: 80,
             height: 80,
@@ -158,7 +160,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return VideoScreen();
+                                        return HomeScreen();
                                       },
                                     ),
                                   );

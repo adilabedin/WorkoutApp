@@ -6,8 +6,8 @@ class BodyWeightTraining {
   String workoutType;
   String title;
   String description;
-  String sets;
-  String reps;
+  int sets;
+  int reps;
   int restTime;
   int workoutWeight;
   String workoutTime;

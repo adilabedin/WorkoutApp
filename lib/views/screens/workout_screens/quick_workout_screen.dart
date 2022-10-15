@@ -21,8 +21,8 @@ class QuickWorkoutScreen extends StatefulWidget {
   final String workoutType;
   final String workoutName;
   final String description;
-  final String sets;
-  final String reps;
+  final int sets;
+  final int reps;
   int restTime;
 
   @override
@@ -121,12 +121,23 @@ class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
   bool started = false;
   List Sets = [];
 
+  textBoxDialogue() {
+    String text = '';
+    if (Sets.length + 1 == widget.sets) {
+      text = 'You Completed the Workout!';
+    } else {
+      text = 'Would you like to stop workout?';
+    }
+
+    return text;
+  }
+
   void stop() {
     addSets();
     showDialog(
       context: context,
       builder: ((context) => AlertDialog(
-            title: Text('Would you like to Continue Workout?'),
+            title: Text(textBoxDialogue()),
             actions: [
               ElevatedButton(
                   onPressed: () {
@@ -160,6 +171,35 @@ class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
     );
   }
 
+  void stopBySets() {
+    showDialog(
+        context: context,
+        builder: ((context) =>
+            AlertDialog(title: Text(textBoxDialogue()), actions: [
+              ElevatedButton(
+                  onPressed: () {
+                    timer!.cancel();
+                    String workoutTime = Sets.last;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return WorkoutSummary(
+                              workoutType: workoutType,
+                              workoutName: workoutName,
+                              description: description,
+                              workoutTime: workoutTime,
+                              sets: sets,
+                              reps: reps,
+                              restTime: conRestTime);
+                        },
+                      ),
+                    );
+                  },
+                  child: Text('Finsish Workout')),
+            ])));
+  }
+
   void reset() {
     timer!.cancel();
     setState(() {
@@ -178,7 +218,11 @@ class _QuickWorkoutScreenState extends State<QuickWorkoutScreen> {
   addSets() {
     String set = "$digitHours:$digitMinutes:$digitSeconds";
     setState(() {
-      Sets.add(set);
+      if (Sets.length + 1 != widget.sets) {
+        Sets.add(set);
+      } else {
+        stopBySets();
+      }
     });
   }
 

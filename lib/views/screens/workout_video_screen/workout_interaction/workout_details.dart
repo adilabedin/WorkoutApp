@@ -47,8 +47,8 @@ class WorkoutDetails extends StatelessWidget {
                                       workoutType: data.workoutType,
                                       workoutName: data.title,
                                       description: data.description,
-                                      sets: data.sets,
-                                      reps: data.reps,
+                                      sets: int.parse(data.sets),
+                                      reps: int.parse(data.reps),
                                       restTime: int.parse(data.time));
                                 },
                               ),

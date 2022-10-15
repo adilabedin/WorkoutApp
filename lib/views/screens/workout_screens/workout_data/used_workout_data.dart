@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
+import 'package:workout_app/views/screens/home_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_dynamic_screen.dart';
 
 class UsedWorkoutData extends StatefulWidget {
@@ -32,6 +33,14 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
           automaticallyImplyLeading: false,
           title: const Text('Workout Data'),
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Get.to(HomeScreen());
+              },
+            )
+          ],
           bottom: const TabBar(tabs: [
             Tab(text: 'Body-Weight'),
             Tab(
