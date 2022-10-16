@@ -87,6 +87,6 @@ class _WTWorkoutDataScreenState extends State<WTWorkoutDataScreen> {
   }
 
   Widget buildPages() {
-    return wtPages[0]; //change this
+    return wtPages[index]; //change this
   }
 }

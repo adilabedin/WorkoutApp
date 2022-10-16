@@ -87,6 +87,6 @@ class _BWWorkoutDataScreenState extends State<BWWorkoutDataScreen> {
   }
 
   Widget buildPages() {
-    return bwPages[0]; //change this
+    return bwPages[index]; //change this
   }
 }

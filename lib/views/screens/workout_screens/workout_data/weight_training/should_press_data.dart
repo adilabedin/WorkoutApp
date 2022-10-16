@@ -6,19 +6,17 @@ import 'package:workout_app/views/widgets/progressChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class BWWorkoutDataDynamicScreen extends StatefulWidget {
-  const BWWorkoutDataDynamicScreen({Key? key, required this.workoutType})
+class ShoulderPressData extends StatefulWidget {
+  const ShoulderPressData({Key? key, required this.workoutType})
       : super(key: key);
 
   final String workoutType;
 
   @override
-  State<BWWorkoutDataDynamicScreen> createState() =>
-      _BWWorkoutDataDynamicScreenState();
+  State<ShoulderPressData> createState() => _ShoulderPressDataState();
 }
 
-class _BWWorkoutDataDynamicScreenState
-    extends State<BWWorkoutDataDynamicScreen> {
+class _ShoulderPressDataState extends State<ShoulderPressData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
@@ -31,14 +29,15 @@ class _BWWorkoutDataDynamicScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        items = workoutController.bodyWeight.length;
-        progressBWList();
+        items = workoutController.shoulderPress.length;
+        progressWTList();
+
         return PageView.builder(
           itemCount: items,
           controller: PageController(initialPage: items, viewportFraction: 1),
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            data = workoutController.bodyWeight[index];
+            data = workoutController.shoulderPress[index];
 
             return Column(children: [
               Center(
@@ -80,11 +79,11 @@ class _BWWorkoutDataDynamicScreenState
     );
   }
 
-  progressBWList() {
-    for (int i = 0; i < workoutController.bodyWeight.length; i++) {
+  progressWTList() {
+    for (int i = 0; i < workoutController.shoulderPress.length; i++) {
       Rdata.add(ProgressWT(
-          workoutName: workoutController.bodyWeight[i].workoutTime,
-          weightused: workoutController.bodyWeight[i].reps,
+          workoutName: workoutController.shoulderPress[i].workoutTime,
+          weightused: workoutController.shoulderPress[i].workoutWeight,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }

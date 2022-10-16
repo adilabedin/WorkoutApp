@@ -83,6 +83,6 @@ class _CardioWorkoutDataScreenState extends State<CardioWorkoutDataScreen> {
   }
 
   Widget buildPages() {
-    return wtPages[0]; //change this
+    return cardioPages[index]; //change this
   }
 }

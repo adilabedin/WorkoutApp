@@ -6,18 +6,16 @@ import 'package:workout_app/views/widgets/progressChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class WorkoutDataDynamicScreen extends StatefulWidget {
-  const WorkoutDataDynamicScreen({Key? key, required this.workoutType})
-      : super(key: key);
+class SwimmingData extends StatefulWidget {
+  const SwimmingData({Key? key, required this.workoutType}) : super(key: key);
 
   final String workoutType;
 
   @override
-  State<WorkoutDataDynamicScreen> createState() =>
-      _WorkoutDataDynamicScreenState();
+  State<SwimmingData> createState() => _SwimmingDataState();
 }
 
-class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
+class _SwimmingDataState extends State<SwimmingData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
@@ -30,15 +28,14 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        items = workoutController.weightTraining.length;
-        progressWTList();
-
+        items = workoutController.swimming.length;
+        progressBWList();
         return PageView.builder(
           itemCount: items,
           controller: PageController(initialPage: items, viewportFraction: 1),
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            data = workoutController.weightTraining[index];
+            data = workoutController.swimming[index];
 
             return Column(children: [
               Center(
@@ -51,11 +48,11 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       Text(
-                        data.sets.toString() + ' sets',
+                        data.laps.toString() + ' laps',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       Text(
-                        data.reps.toString() + ' reps',
+                        data.lapDistance.toString() + ' lap Distance',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       Text(
@@ -63,7 +60,7 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       Text(
-                        data.workoutWeight.toString() + ' weight used',
+                        data.workoutTime.toString() + ' workout duration',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       ProgressChart(
@@ -80,11 +77,11 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
     );
   }
 
-  progressWTList() {
-    for (int i = 0; i < workoutController.weightTraining.length; i++) {
+  progressBWList() {
+    for (int i = 0; i < workoutController.swimming.length; i++) {
       Rdata.add(ProgressWT(
-          workoutName: workoutController.weightTraining[i].workoutTime,
-          weightused: workoutController.weightTraining[i].workoutWeight,
+          workoutName: workoutController.swimming[i].workoutTime,
+          weightused: workoutController.swimming[i].laps,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }

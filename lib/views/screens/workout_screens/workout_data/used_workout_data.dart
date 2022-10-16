@@ -6,7 +6,7 @@ import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/body_weight_Training/bw_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/cardio_training/cardio_workout_data_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_dynamic_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/bench_press_data.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 
 class UsedWorkoutData extends StatefulWidget {
@@ -23,9 +23,19 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    workoutData.getWeightWorkout('Weight-Training', 'Bench Press');
-    workoutData.getCardioWorkout('Cardio', 'Running');
-    workoutData.getBodyWorkout('Body-Weight-Training', 'Push Ups');
+    workoutData.getBenchPress('Weight-Training', 'Bench Press');
+    workoutData.getSquats('Weight-Training', 'Squats');
+    workoutData.getShoulderPress('Weight-Training', 'Shoulder Press');
+    workoutData.getDeadLift('Weight-Training', 'DeadLift');
+
+    workoutData.getRunning('cardio', 'Running');
+    workoutData.getSwimming('cardio', 'Swimming');
+    workoutData.getCycling('cardio', 'Cycling');
+
+    workoutData.getPushUps('Body-Weight-Training', 'Push Ups');
+    workoutData.getPullUps('Body-Weight-Training', 'Pull Ups');
+    workoutData.getBWSquats('Body-Weight-Training', 'Squats');
+    workoutData.getSitUps('Body-Weight-Training', 'Sit Ups');
   }
 
   @override
