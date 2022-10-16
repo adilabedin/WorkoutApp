@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
+import 'package:workout_app/models/progressWT.dart';
+import 'package:workout_app/views/widgets/progressWTChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class WorkoutDataDynamicScreen extends StatefulWidget {
   const WorkoutDataDynamicScreen({Key? key, required this.workoutType})
@@ -19,7 +22,9 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
       Get.put(WorkoutDataController());
 
   int items = 0;
+  int one = 1;
   var data = null;
+  final List<ProgressWT> Rdata = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
         ;
         return PageView.builder(
           itemCount: items,
-          controller: PageController(initialPage: 0, viewportFraction: 1),
+          controller: PageController(initialPage: items, viewportFraction: 1),
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             if (widget.workoutType == 'Weight-Training') {
@@ -47,9 +52,40 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
             }
             return Column(children: [
               Center(
-                child: Text(
-                  data.title + ' workout $index',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        data.title + ' workout $index',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      Text(
+                        data.sets.toString() + ' sets',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      Text(
+                        data.reps.toString() + ' reps',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      Text(
+                        data.restTime.toString() + ' rest time',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      Text(
+                        data.workoutWeight.toString() + ' weight used',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      ElevatedButton(
+                        child: Text('Show Progress'),
+                        onPressed: () {
+                          progressWTList(
+                              index.toString(), data.workoutWeight, items);
+                        },
+                      ),
+                      ProgressWTChart(data: Rdata)
+                    ],
+                  ),
                 ),
               )
             ]);
@@ -57,5 +93,14 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
         );
       }),
     );
+  }
+
+  progressWTList(String workoutNumber, int workoutWeight, int items) {
+    Rdata.add(ProgressWT(
+        workoutNumber: workoutNumber,
+        weightused: workoutWeight,
+        barColor: charts.ColorUtil.fromDartColor(Colors.green)));
+
+    return Rdata;
   }
 }
