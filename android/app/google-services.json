@@ -29,6 +29,13 @@
             {
               "client_id": "1046762028453-c00e4ffdk3a9s18t6hr94n6mp3rm1316.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1046762028453-vttij9q76o8pa055s9s4ep5c78fmh8ok.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abedin.workoutApp"
+              }
             }
           ]
         }
