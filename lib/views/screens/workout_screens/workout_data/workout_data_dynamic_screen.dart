@@ -32,6 +32,7 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
       body: Obx(() {
         if (widget.workoutType == 'Weight-Training') {
           items = workoutController.weightTraining.length;
+          progressWTList();
         } else if (widget.workoutType == 'Cardio') {
           items = workoutController.cardio.length;
         } else if (widget.workoutType == 'Body-Weight-Training') {
@@ -76,14 +77,9 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
                         data.workoutWeight.toString() + ' weight used',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
-                      ElevatedButton(
-                        child: Text('Show Progress'),
-                        onPressed: () {
-                          progressWTList(
-                              index.toString(), data.workoutWeight, items);
-                        },
-                      ),
-                      ProgressWTChart(data: Rdata)
+                      ProgressWTChart(
+                        data: Rdata,
+                      )
                     ],
                   ),
                 ),
@@ -95,12 +91,12 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
     );
   }
 
-  progressWTList(String workoutNumber, int workoutWeight, int items) {
-    Rdata.add(ProgressWT(
-        workoutNumber: workoutNumber,
-        weightused: workoutWeight,
-        barColor: charts.ColorUtil.fromDartColor(Colors.green)));
-
-    return Rdata;
+  progressWTList() {
+    for (int i = 0; i < workoutController.weightTraining.length; i++) {
+      Rdata.add(ProgressWT(
+          workoutName: workoutController.weightTraining[i].workoutTime,
+          weightused: workoutController.weightTraining[i].workoutWeight,
+          barColor: charts.ColorUtil.fromDartColor(Colors.green)));
+    }
   }
 }

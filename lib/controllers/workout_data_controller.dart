@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
 import 'package:workout_app/models/cardio.dart';
+import 'package:workout_app/models/progressWT.dart';
 import 'package:workout_app/models/weight_training.dart';
 import 'package:workout_app/models/workout_data_model.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
@@ -12,10 +13,12 @@ class WorkoutDataController extends GetxController {
   final Rx<List<WeightTraining>> _weightTraining = Rx<List<WeightTraining>>([]);
   final Rx<List<Cardio>> _cardio = Rx<List<Cardio>>([]);
   final Rx<List<WeightTraining>> _bodyWeight = Rx<List<WeightTraining>>([]);
+  final Rx<List<ProgressWT>> _getWT = Rx<List<ProgressWT>>([]);
 
   List<WeightTraining> get weightTraining => _weightTraining.value;
   List<Cardio> get cardio => _cardio.value;
   List<WeightTraining> get bodyWeight => _bodyWeight.value;
+  List<ProgressWT> get getWT => _getWT.value;
 
   getWeightWorkout(String workoutType) async {
     String uid = firebaseAuth.currentUser!.uid;
