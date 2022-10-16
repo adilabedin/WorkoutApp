@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/models/progressWT.dart';
-import 'package:workout_app/views/widgets/progressWTChart.dart';
+import 'package:workout_app/views/widgets/progressChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
@@ -37,8 +37,9 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
           items = workoutController.cardio.length;
         } else if (widget.workoutType == 'Body-Weight-Training') {
           items = workoutController.bodyWeight.length;
+          progressBWList();
         }
-        ;
+
         return PageView.builder(
           itemCount: items,
           controller: PageController(initialPage: items, viewportFraction: 1),
@@ -77,7 +78,7 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
                         data.workoutWeight.toString() + ' weight used',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
-                      ProgressWTChart(
+                      ProgressChart(
                         data: Rdata,
                       )
                     ],
@@ -96,6 +97,15 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
       Rdata.add(ProgressWT(
           workoutName: workoutController.weightTraining[i].workoutTime,
           weightused: workoutController.weightTraining[i].workoutWeight,
+          barColor: charts.ColorUtil.fromDartColor(Colors.green)));
+    }
+  }
+
+  progressBWList() {
+    for (int i = 0; i < workoutController.bodyWeight.length; i++) {
+      Rdata.add(ProgressWT(
+          workoutName: workoutController.bodyWeight[i].workoutTime,
+          weightused: workoutController.bodyWeight[i].workoutWeight,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:workout_app/providers/quick_workout_provider.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/alt_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
 import 'dart:async';
 
-import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
 
 class BuildWorkoutTimer extends StatefulWidget {
   const BuildWorkoutTimer({Key? key}) : super(key: key);

@@ -18,14 +18,15 @@ class WorkoutDataController extends GetxController {
   List<WeightTraining> get weightTraining => _weightTraining.value;
   List<Cardio> get cardio => _cardio.value;
   List<WeightTraining> get bodyWeight => _bodyWeight.value;
-  List<ProgressWT> get getWT => _getWT.value;
 
-  getWeightWorkout(String workoutType) async {
+  getWeightWorkout(String workoutType, String title) async {
     String uid = firebaseAuth.currentUser!.uid;
     _weightTraining.bindStream(firestore
         .collection('users')
         .doc(uid)
-        .collection(workoutType)
+        .collection('workouts')
+        .doc(workoutType)
+        .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
       List<WeightTraining> retVal = [];
@@ -36,12 +37,14 @@ class WorkoutDataController extends GetxController {
     }));
   }
 
-  getBodyWorkout(String workoutType) async {
+  getBodyWorkout(String workoutType, String title) async {
     String uid = firebaseAuth.currentUser!.uid;
     _bodyWeight.bindStream(firestore
         .collection('users')
         .doc(uid)
         .collection(workoutType)
+        .doc(workoutType)
+        .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
       List<WeightTraining> retVal = [];
@@ -68,6 +71,40 @@ class WorkoutDataController extends GetxController {
     }));
   }
 
+  saveWorkout(String workoutType, String title, String description) async {
+    try {
+      String uid = firebaseAuth.currentUser!.uid;
+      var allDocs = await firestore
+          .collection('users')
+          .doc(uid)
+          .collection('workouts')
+          .get();
+      int len = allDocs.docs.length;
+
+      WorkoutData workoutData = WorkoutData(
+        uid: uid,
+        id: title,
+        workoutType: workoutType,
+        title: title,
+        description: description,
+      );
+
+      await firestore
+          .collection('users')
+          .doc(uid)
+          .collection('workouts')
+          .doc(workoutType)
+          .set(
+            workoutData.toJson(),
+          );
+    } catch (e) {
+      Get.snackbar(
+        'Error Uploading workout data',
+        e.toString(),
+      );
+    }
+  }
+
   saveBodyWeightSummary(
       String workoutType,
       String title,
@@ -82,7 +119,9 @@ class WorkoutDataController extends GetxController {
       var allDocs = await firestore
           .collection('users')
           .doc(uid)
-          .collection(workoutType)
+          .collection('workouts')
+          .doc(workoutType)
+          .collection(title)
           .get();
       int len = allDocs.docs.length;
 
@@ -102,8 +141,10 @@ class WorkoutDataController extends GetxController {
       await firestore
           .collection('users')
           .doc(uid)
-          .collection(workoutType)
-          .doc(title + ' $len')
+          .collection('workouts')
+          .doc(workoutType)
+          .collection(title)
+          .doc(title + 'workout $len')
           .set(
             weightTraining.toJson(),
           );
@@ -129,7 +170,9 @@ class WorkoutDataController extends GetxController {
       var allDocs = await firestore
           .collection('users')
           .doc(uid)
-          .collection(workoutType)
+          .collection('workouts')
+          .doc(workoutType)
+          .collection(title)
           .get();
       int len = allDocs.docs.length;
 
@@ -149,8 +192,10 @@ class WorkoutDataController extends GetxController {
       await firestore
           .collection('users')
           .doc(uid)
-          .collection(workoutType)
-          .doc(title + ' $len')
+          .collection('workouts')
+          .doc(workoutType)
+          .collection(title)
+          .doc(title + 'workout $len')
           .set(
             weightTraining.toJson(),
           );

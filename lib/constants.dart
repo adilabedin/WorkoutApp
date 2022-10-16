@@ -19,6 +19,10 @@ List pages = [
   ProfileScreen(uid: authController.user.uid),
 ];
 
+List wtPages = [WorkoutDataDynamicScreen(workoutType: 'Weight-Training')];
+List bwPages = [WorkoutDataDynamicScreen(workoutType: 'Body-Weight-Training')];
+List cardioPages = [];
+
 // COLORS
 const backgroundColor = Colors.black;
 var buttonColor = Colors.blue;

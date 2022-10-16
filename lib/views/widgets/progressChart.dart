@@ -4,10 +4,10 @@ import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/models/progressWT.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class ProgressWTChart extends StatelessWidget {
+class ProgressChart extends StatelessWidget {
   List<ProgressWT> data = [];
 
-  ProgressWTChart({required this.data});
+  ProgressChart({required this.data});
 
   @override
   Widget build(BuildContext context) {

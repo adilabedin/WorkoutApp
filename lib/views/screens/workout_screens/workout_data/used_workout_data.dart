@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/bw_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_dynamic_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
 
 class UsedWorkoutData extends StatefulWidget {
   const UsedWorkoutData({super.key});
@@ -20,9 +22,9 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    workoutData.getWeightWorkout('Weight-Training');
+    workoutData.getWeightWorkout('Weight-Training', 'Bench Press');
     workoutData.getCardioWorkout('Cardio');
-    workoutData.getBodyWorkout('Body-Weight-Training');
+    workoutData.getBodyWorkout('Body-Weight-Training', 'Push Ups');
   }
 
   @override
@@ -54,13 +56,10 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
         body: TabBarView(
           children: [
             Center(
-                child: WorkoutDataDynamicScreen(
-              workoutType: 'Body-Weight-Training',
-            )),
+              child: BWWorkoutDataScreen(),
+            ),
             Center(
-              child: WorkoutDataDynamicScreen(
-                workoutType: 'Weight-Training',
-              ),
+              child: WTWorkoutDataScreen(),
             ),
             Center(
               child: WorkoutDataDynamicScreen(

@@ -3,7 +3,7 @@ import 'package:workout_app/providers/quick_workout_provider.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 import 'dart:async';
 
-import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/workout_summary.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 
