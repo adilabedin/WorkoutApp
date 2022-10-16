@@ -6,7 +6,7 @@ import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 

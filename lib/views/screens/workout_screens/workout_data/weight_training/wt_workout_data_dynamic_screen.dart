@@ -30,28 +30,16 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        if (widget.workoutType == 'Weight-Training') {
-          items = workoutController.weightTraining.length;
-          progressWTList();
-        } else if (widget.workoutType == 'Cardio') {
-          items = workoutController.cardio.length;
-        } else if (widget.workoutType == 'Body-Weight-Training') {
-          items = workoutController.bodyWeight.length;
-          progressBWList();
-        }
+        items = workoutController.weightTraining.length;
+        progressWTList();
 
         return PageView.builder(
           itemCount: items,
           controller: PageController(initialPage: items, viewportFraction: 1),
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            if (widget.workoutType == 'Weight-Training') {
-              data = workoutController.weightTraining[index];
-            } else if (widget.workoutType == 'Cardio') {
-              data = workoutController.cardio[index];
-            } else if (widget.workoutType == 'Body-Weight-Training') {
-              data = workoutController.bodyWeight[index];
-            }
+            data = workoutController.weightTraining[index];
+
             return Column(children: [
               Center(
                 child: Padding(
@@ -97,15 +85,6 @@ class _WorkoutDataDynamicScreenState extends State<WorkoutDataDynamicScreen> {
       Rdata.add(ProgressWT(
           workoutName: workoutController.weightTraining[i].workoutTime,
           weightused: workoutController.weightTraining[i].workoutWeight,
-          barColor: charts.ColorUtil.fromDartColor(Colors.green)));
-    }
-  }
-
-  progressBWList() {
-    for (int i = 0; i < workoutController.bodyWeight.length; i++) {
-      Rdata.add(ProgressWT(
-          workoutName: workoutController.bodyWeight[i].workoutTime,
-          weightused: workoutController.bodyWeight[i].workoutWeight,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }

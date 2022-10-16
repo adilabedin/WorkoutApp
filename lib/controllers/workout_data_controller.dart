@@ -13,7 +13,6 @@ class WorkoutDataController extends GetxController {
   final Rx<List<WeightTraining>> _weightTraining = Rx<List<WeightTraining>>([]);
   final Rx<List<Cardio>> _cardio = Rx<List<Cardio>>([]);
   final Rx<List<WeightTraining>> _bodyWeight = Rx<List<WeightTraining>>([]);
-  final Rx<List<ProgressWT>> _getWT = Rx<List<ProgressWT>>([]);
 
   List<WeightTraining> get weightTraining => _weightTraining.value;
   List<Cardio> get cardio => _cardio.value;
@@ -42,7 +41,7 @@ class WorkoutDataController extends GetxController {
     _bodyWeight.bindStream(firestore
         .collection('users')
         .doc(uid)
-        .collection(workoutType)
+        .collection('workouts')
         .doc(workoutType)
         .collection(title)
         .snapshots()
@@ -55,7 +54,7 @@ class WorkoutDataController extends GetxController {
     }));
   }
 
-  getCardioWorkout(String workoutType) async {
+  getCardioWorkout(String workoutType, String title) async {
     String uid = firebaseAuth.currentUser!.uid;
     _cardio.bindStream(firestore
         .collection('users')

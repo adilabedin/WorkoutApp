@@ -4,9 +4,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/bw_workout_data_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_dynamic_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/body_weight_Training/bw_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/cardio_training/cardio_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_dynamic_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 
 class UsedWorkoutData extends StatefulWidget {
   const UsedWorkoutData({super.key});
@@ -23,7 +24,7 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
     // TODO: implement initState
     super.initState();
     workoutData.getWeightWorkout('Weight-Training', 'Bench Press');
-    workoutData.getCardioWorkout('Cardio');
+    workoutData.getCardioWorkout('Cardio', 'Running');
     workoutData.getBodyWorkout('Body-Weight-Training', 'Push Ups');
   }
 
@@ -62,10 +63,8 @@ class _UsedWorkoutDataState extends State<UsedWorkoutData> {
               child: WTWorkoutDataScreen(),
             ),
             Center(
-              child: WorkoutDataDynamicScreen(
-                workoutType: 'Cardio',
-              ),
-            )
+              child: CardioWorkoutDataScreen(),
+            ),
           ],
         ),
       ));

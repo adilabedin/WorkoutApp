@@ -8,7 +8,7 @@ import 'package:workout_app/controllers/profile_controller.dart';
 import 'package:workout_app/controllers/video_controller.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class ProfileScreen extends StatefulWidget {

@@ -8,8 +8,10 @@ import 'package:workout_app/views/screens/workout_screens/favourite_workouts/fav
 import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workouts_screen.dart';
 import 'package:workout_app/views/screens/messages_screen.dart';
 import 'package:workout_app/views/screens/profile_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data_dynamic_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_dynamic_screen.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
+
+import 'views/screens/workout_screens/workout_data/body_weight_Training/bw_workout_data_dynamicScreen.dart';
 
 List pages = [
   VideoScreen(),
@@ -20,7 +22,9 @@ List pages = [
 ];
 
 List wtPages = [WorkoutDataDynamicScreen(workoutType: 'Weight-Training')];
-List bwPages = [WorkoutDataDynamicScreen(workoutType: 'Body-Weight-Training')];
+List bwPages = [
+  BWWorkoutDataDynamicScreen(workoutType: 'Body-Weight-Training')
+];
 List cardioPages = [];
 
 // COLORS

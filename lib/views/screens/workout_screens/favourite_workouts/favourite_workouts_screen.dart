@@ -12,7 +12,7 @@ import 'package:workout_app/views/screens/messages_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workout_video_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_form.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/wt_workout_data_screen.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 import 'package:workout_app/views/widgets/video_player_item.dart';
 
 class FavouriteWorkoutsScreen extends StatefulWidget {
