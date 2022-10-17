@@ -20,6 +20,12 @@ class _DeadLiftDataState extends State<DeadLiftData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    super.initState();
+    workoutController.getDeadLift('Weight-Training', 'Dead Lift');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;

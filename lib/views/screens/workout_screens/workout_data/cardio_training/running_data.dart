@@ -20,6 +20,13 @@ class _RunningDataState extends State<RunningData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getRunning('cardio', 'Running');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;
@@ -49,10 +56,12 @@ class _RunningDataState extends State<RunningData> {
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       CardioWorkoutCard(
+                        workoutType: data.workoutType,
                         title: data.title,
                         description: data.description,
                         lapDistance: data.lapDistance,
                         laps: data.laps,
+                        restTime: data.restTime,
                       ),
                       Text(
                         'Timer: ' + data.workoutTime.toString() + 's',

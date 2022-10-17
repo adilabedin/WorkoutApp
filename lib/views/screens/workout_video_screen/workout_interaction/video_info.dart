@@ -37,23 +37,6 @@ class VideoInfo extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.music_note,
-                          size: 15,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          data.description,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               ),

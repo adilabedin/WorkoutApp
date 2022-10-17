@@ -20,6 +20,14 @@ class _SquatsDataState extends State<SquatsData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getSquats('Weight-Training', 'Squats');
+    ;
+  }
+
   int items = 0;
   int one = 1;
   var data = null;
@@ -50,6 +58,7 @@ class _SquatsDataState extends State<SquatsData> {
                         style: TextStyle(fontSize: 18),
                       ),
                       WorkoutCard(
+                          workoutType: data.workoutType,
                           title: data.title,
                           description: data.description,
                           sets: data.sets,

@@ -21,6 +21,13 @@ class _ShoulderPressDataState extends State<ShoulderPressData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getShoulderPress('Weight-Training', 'Shoulder Press');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;
@@ -51,6 +58,7 @@ class _ShoulderPressDataState extends State<ShoulderPressData> {
                         style: TextStyle(fontSize: 18),
                       ),
                       WorkoutCard(
+                          workoutType: data.workoutType,
                           title: data.title,
                           description: data.description,
                           sets: data.sets,

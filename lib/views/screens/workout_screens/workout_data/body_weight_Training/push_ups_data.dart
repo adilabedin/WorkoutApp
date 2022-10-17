@@ -20,6 +20,13 @@ class _PushUpsDataState extends State<PushUpsData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getPushUps('Body-Weight-Training', 'Push Ups');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;

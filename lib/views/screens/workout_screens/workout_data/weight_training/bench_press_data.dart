@@ -20,6 +20,12 @@ class _BenchPressDataState extends State<BenchPressData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    super.initState();
+    workoutController.getBenchPress('Weight-Training', 'Bench Press');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;
@@ -52,9 +58,9 @@ class _BenchPressDataState extends State<BenchPressData> {
                       WorkoutCard(
                           title: data.title,
                           description: data.description,
-                          sets: int.parse(data.sets),
-                          reps: int.parse(data.reps),
-                          restTime: int.parse(data.restTime)),
+                          sets: data.sets,
+                          reps: data.reps,
+                          restTime: data.restTime),
                       Text(
                         'Last Workout: ' +
                             data.workoutWeight.toString() +

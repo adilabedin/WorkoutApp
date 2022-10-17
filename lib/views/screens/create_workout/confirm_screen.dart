@@ -28,7 +28,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     _selectedValue = list[0];
   }
   late VideoPlayerController controller;
-  TextEditingController _workoutTypeController = TextEditingController();
   TextEditingController _titleController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _setController = TextEditingController();

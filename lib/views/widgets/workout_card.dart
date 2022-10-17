@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:workout_app/views/screens/workout_screens/quick_workout_screen.dart';
 
 class WorkoutCard extends StatelessWidget {
   WorkoutCard(
-      {required this.title,
+      {required this.workoutType,
+      required this.title,
       required this.description,
       required this.sets,
       required this.reps,
       required this.restTime});
 
+  String workoutType;
   String title;
   String description;
   int sets;
@@ -35,7 +38,15 @@ class WorkoutCard extends StatelessWidget {
             Row(
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(QuickWorkoutScreen(
+                        workoutType: workoutType,
+                        workoutName: title,
+                        description: description,
+                        sets: sets,
+                        reps: reps,
+                        restTime: restTime));
+                  },
                   child: Text('Start Workout'),
                 ),
                 TextButton(

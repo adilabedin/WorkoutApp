@@ -20,25 +20,6 @@ class _WorkoutDataState extends State<WorkoutData> {
   WorkoutDataController workoutData = Get.put(WorkoutDataController());
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    workoutData.getBenchPress('Weight-Training', 'Bench Press');
-    workoutData.getSquats('Weight-Training', 'Squats');
-    workoutData.getShoulderPress('Weight-Training', 'Shoulder Press');
-    workoutData.getDeadLift('Weight-Training', 'DeadLift');
-
-    workoutData.getRunning('cardio', 'Running');
-    workoutData.getSwimming('cardio', 'Swimming');
-    workoutData.getCycling('cardio', 'Cycling');
-
-    workoutData.getPushUps('Body-Weight-Training', 'Push Ups');
-    workoutData.getPullUps('Body-Weight-Training', 'Pull Ups');
-    workoutData.getBWSquats('Body-Weight-Training', 'Squats');
-    workoutData.getSitUps('Body-Weight-Training', 'Sit Ups');
-  }
-
-  @override
   Widget build(BuildContext context) => DefaultTabController(
       length: 3,
       child: Scaffold(

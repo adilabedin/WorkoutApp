@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/workout_data/used_workout_data.dart';
+import 'package:workout_app/views/screens/workout_screens/workout_data/workout_data.dart';
 import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 import 'package:workout_app/views/widgets/text_input_field.dart';
@@ -79,22 +79,32 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
           Text(widget.sets.toString()),
           Text(widget.reps.toString()),
           Text(widget.restTime.toString()),
-          SizedBox(
-            width: 80,
-            height: 80,
-            child: TextFormField(
-              controller: _workoutWeightUsed,
-              decoration: InputDecoration(
-                hintText: '',
-                hintStyle: TextStyle(color: Colors.blue),
-                filled: true,
-                fillColor: Colors.black,
-                border: OutlineInputBorder(),
-              ),
-              style: TextStyle(color: Colors.blue),
-              keyboardType: TextInputType.number,
-            ),
-          ),
+          Container(child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+            if (widget.workoutType == 'Weight-Training' ||
+                widget.workoutType == 'Body-Weight-Training') {
+              return SizedBox(
+                width: 80,
+                height: 80,
+                child: TextFormField(
+                  controller: _workoutWeightUsed,
+                  decoration: InputDecoration(
+                    hintText: '',
+                    hintStyle: TextStyle(color: Colors.blue),
+                    filled: true,
+                    fillColor: Colors.black,
+                    border: OutlineInputBorder(),
+                  ),
+                  style: TextStyle(color: Colors.blue),
+                  keyboardType: TextInputType.number,
+                ),
+              );
+            } else {
+              return Text('');
+            }
+            ;
+            ;
+          })),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

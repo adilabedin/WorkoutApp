@@ -19,6 +19,13 @@ class _SitUpsDataState extends State<SitUpsData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getSitUps('Body-Weight-Training', 'Sit Ups');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;

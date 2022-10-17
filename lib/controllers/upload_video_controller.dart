@@ -9,7 +9,7 @@ class UploadVideoController extends GetxController {
   _compressVideo(String videoPath) async {
     final compressedVideo = await VideoCompress.compressVideo(
       videoPath,
-      quality: VideoQuality.MediumQuality,
+      quality: VideoQuality.LowQuality,
     );
     return compressedVideo!.file;
   }

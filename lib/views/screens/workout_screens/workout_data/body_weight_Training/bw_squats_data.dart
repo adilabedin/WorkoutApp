@@ -20,6 +20,13 @@ class _BWSquatsDataState extends State<BWSquatsData> {
   final WorkoutDataController workoutController =
       Get.put(WorkoutDataController());
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    workoutController.getBWSquats('Body-Weight-Training', 'Squats');
+  }
+
   int items = 0;
   int one = 1;
   var data = null;
