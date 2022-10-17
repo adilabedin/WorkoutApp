@@ -67,7 +67,6 @@ class SignupScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _usernameController,
                 labelText: 'Username',
-                icon: Icons.person,
                 lines: 1,
               ),
             ),
@@ -80,7 +79,6 @@ class SignupScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _emailController,
                 labelText: 'Email',
-                icon: Icons.email,
                 lines: 1,
               ),
             ),
@@ -93,7 +91,6 @@ class SignupScreen extends StatelessWidget {
               child: TextInputField(
                 controller: _passwordController,
                 labelText: 'Password',
-                icon: Icons.lock,
                 isObscure: true,
                 lines: 1,
               ),

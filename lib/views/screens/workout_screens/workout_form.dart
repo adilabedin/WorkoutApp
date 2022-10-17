@@ -63,7 +63,7 @@ class _MyFormState extends State<MyForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MyForm'),
+        title: const Text('Quick Workout'),
         centerTitle: true,
       ),
       body: Container(
@@ -76,12 +76,6 @@ class _MyFormState extends State<MyForm> {
               decoration: InputDecoration(
                   labelText: 'Workout Name', border: OutlineInputBorder()),
             ),
-            TextFormField(
-              controller: _titleController,
-              decoration: InputDecoration(
-                  labelText: 'Workout Name', border: OutlineInputBorder()),
-            ),
-            Text("Product Name is ${_titleController.text}"),
             SizedBox(
               height: 20,
             ),
@@ -92,7 +86,6 @@ class _MyFormState extends State<MyForm> {
               decoration: InputDecoration(
                   labelText: 'Description', border: OutlineInputBorder()),
             ),
-            Text("Product Name is ${_descriptionController.text}"),
             SizedBox(
               height: 20,
             ),

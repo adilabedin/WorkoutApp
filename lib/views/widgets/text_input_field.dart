@@ -5,14 +5,13 @@ class TextInputField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final bool isObscure;
-  final IconData icon;
+
   final int? lines;
   const TextInputField({
     Key? key,
     required this.controller,
     required this.labelText,
     this.isObscure = false,
-    required this.icon,
     required this.lines,
   }) : super(key: key);
 
@@ -33,7 +32,6 @@ class TextInputField extends StatelessWidget {
         maxLines: lines,
         decoration: InputDecoration(
           labelText: labelText,
-          prefixIcon: Icon(icon),
           labelStyle: const TextStyle(
             fontSize: 20,
           ),

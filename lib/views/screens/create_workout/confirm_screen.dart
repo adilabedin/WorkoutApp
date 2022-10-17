@@ -10,8 +10,6 @@ import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 
-const List<String> list = <String>['Weight-Training', 'Cardio', 'Yoga'];
-
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;
@@ -62,6 +60,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   WorkoutTypeDetails workoutType = WorkoutTypeDetails();
 
   final list = ['Body-Weight-Training', 'Weight-Training', 'cardio'];
+
   String? _selectedValue = '';
   @override
   Widget build(BuildContext context) {
@@ -107,7 +106,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       TextInputField(
                         controller: _titleController,
                         labelText: 'Workout Name',
-                        icon: Icons.music_note,
                         lines: 1,
                       ),
                       const SizedBox(
@@ -116,7 +114,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       TextInputField(
                         controller: _descriptionController,
                         labelText: 'description',
-                        icon: Icons.closed_caption,
                         lines: null,
                       ),
                       const SizedBox(
@@ -125,11 +122,10 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 100,
+                            width: 120,
                             child: TextInputField(
                               controller: _setController,
-                              labelText: 'Sets',
-                              icon: Icons.closed_caption,
+                              labelText: 'Sets/Distance',
                               lines: 1,
                             ),
                           ),
@@ -137,22 +133,20 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                             width: 10,
                           ),
                           SizedBox(
-                            width: 100,
+                            width: 120,
                             child: TextInputField(
                                 controller: _repController,
-                                labelText: 'Reps',
-                                icon: Icons.music_note,
+                                labelText: 'laps/Reps',
                                 lines: 1),
                           ),
                           const SizedBox(
                             width: 10,
                           ),
                           SizedBox(
-                            width: 100,
+                            width: 120,
                             child: TextInputField(
                               controller: _timeController,
-                              labelText: 'time',
-                              icon: Icons.closed_caption,
+                              labelText: 'Rest time',
                               lines: 1,
                             ),
                           ),

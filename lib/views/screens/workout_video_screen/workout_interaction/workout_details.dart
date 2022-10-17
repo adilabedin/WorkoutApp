@@ -22,22 +22,17 @@ class WorkoutDetails extends StatelessWidget {
                     content: Column(
                       children: [
                         Text(data.title),
-                        SizedBox(height: 20),
                         Text(data.description),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            Text(data.sets + ' SETS'),
-                            SizedBox(width: 12),
-                            Text(data.reps + ' REPS'),
-                            SizedBox(width: 12),
-                            Text(data.time + ' Rest Time'),
-                          ],
-                        )
+                        Text(data.sets +
+                            ' SET(S) ' +
+                            data.reps +
+                            ' REP(S) ' +
+                            data.time +
+                            's Rest Time'),
                       ],
                     ),
                     actions: [
-                      ElevatedButton(
+                      TextButton(
                           onPressed: () {
                             Navigator.push(
                               context,

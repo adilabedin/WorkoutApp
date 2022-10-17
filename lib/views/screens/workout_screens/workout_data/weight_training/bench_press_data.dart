@@ -45,17 +45,21 @@ class _BenchPressDataState extends State<BenchPressData> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
+                      Text(
+                        data.title + ' workout ' + index.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ),
                       WorkoutCard(
                           title: data.title,
                           description: data.description,
-                          sets: data.sets,
-                          reps: data.reps,
-                          restTime: data.restTime),
+                          sets: int.parse(data.sets),
+                          reps: int.parse(data.reps),
+                          restTime: int.parse(data.restTime)),
                       Text(
                         'Last Workout: ' +
                             data.workoutWeight.toString() +
                             'kg used',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       ProgressChart(
                         data: Rdata,

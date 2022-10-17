@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "1046762028453",
-    "project_id": "workout-app-2916f",
-    "storage_bucket": "workout-app-2916f.appspot.com"
+    "project_number": "1035598886594",
+    "project_id": "workout-app-1db12",
+    "storage_bucket": "workout-app-1db12.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1046762028453:android:e5501380c8eefc21a0bc4c",
+        "mobilesdk_app_id": "1:1035598886594:android:863339c4e2d6881c6ded5b",
         "android_client_info": {
           "package_name": "com.abedin.workout_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1046762028453-c00e4ffdk3a9s18t6hr94n6mp3rm1316.apps.googleusercontent.com",
+          "client_id": "1035598886594-2a5ei0k46uk9sfl67020rn6s20f5tp4u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDeesd4kM8yQ-FkByjgIiF1XJeoc-r7IIY"
+          "current_key": "AIzaSyCrjNcyA2_tYh-rB75yB7yGMuG554XX3mI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1046762028453-c00e4ffdk3a9s18t6hr94n6mp3rm1316.apps.googleusercontent.com",
+              "client_id": "1035598886594-2a5ei0k46uk9sfl67020rn6s20f5tp4u.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "1046762028453-vttij9q76o8pa055s9s4ep5c78fmh8ok.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.abedin.workoutApp"
-              }
             }
           ]
         }

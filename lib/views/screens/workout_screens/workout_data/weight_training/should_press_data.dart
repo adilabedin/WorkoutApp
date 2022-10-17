@@ -5,6 +5,7 @@ import 'package:workout_app/models/progressWT.dart';
 import 'package:workout_app/views/widgets/progressChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:workout_app/views/widgets/workout_card.dart';
 
 class ShoulderPressData extends StatefulWidget {
   const ShoulderPressData({Key? key, required this.workoutType})
@@ -46,24 +47,20 @@ class _ShoulderPressDataState extends State<ShoulderPressData> {
                   child: Column(
                     children: [
                       Text(
-                        data.title + ' workout $index',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        data.title + ' workout ' + index.toString(),
+                        style: TextStyle(fontSize: 18),
                       ),
+                      WorkoutCard(
+                          title: data.title,
+                          description: data.description,
+                          sets: data.sets,
+                          reps: data.reps,
+                          restTime: data.restTime),
                       Text(
-                        data.sets.toString() + ' sets',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.reps.toString() + ' reps',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.restTime.toString() + ' rest time',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.workoutWeight.toString() + ' weight used',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        'Last Workout: ' +
+                            data.workoutWeight.toString() +
+                            'kg used',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       ProgressChart(
                         data: Rdata,

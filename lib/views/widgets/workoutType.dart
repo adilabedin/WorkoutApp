@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-const List<String> list = <String>['Weight-Training', 'Cardio', 'Yoga'];
+const List<String> list = <String>[
+  'Body-Weight-Training',
+  'Weight-Training',
+  'Cardio'
+];
 
 class WorkoutType extends StatefulWidget {
   const WorkoutType({super.key});

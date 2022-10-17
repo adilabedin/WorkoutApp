@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/controllers/workout_data_controller.dart';
 import 'package:workout_app/models/progressWT.dart';
+import 'package:workout_app/views/widgets/cardio_workout_card.dart';
 import 'package:workout_app/views/widgets/progressChart.dart';
 import 'package:workout_app/views/widgets/workoutType.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -45,22 +46,16 @@ class _RunningDataState extends State<RunningData> {
                     children: [
                       Text(
                         data.title + ' workout $index',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      CardioWorkoutCard(
+                        title: data.title,
+                        description: data.description,
+                        lapDistance: data.lapDistance,
+                        laps: data.laps,
                       ),
                       Text(
-                        data.laps.toString() + ' laps',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.lapDistance.toString() + ' lap Distance',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.restTime.toString() + ' rest time',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      Text(
-                        data.workoutTime.toString() + ' workout duration',
+                        'Timer: ' + data.workoutTime.toString() + 's',
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       ProgressChart(
