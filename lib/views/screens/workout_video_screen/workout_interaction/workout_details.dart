@@ -19,18 +19,19 @@ class WorkoutDetails extends StatelessWidget {
               context: context,
               builder: ((context) => AlertDialog(
                     title: Text(data.workoutType),
-                    content: Column(
+                    content: SingleChildScrollView(
+                        child: ListBody(
                       children: [
                         Text(data.title),
                         Text(data.description),
                         Text(data.sets +
-                            ' SET(S) ' +
+                            ' Set(S) | ' +
                             data.reps +
-                            ' REP(S) ' +
+                            ' Rep(S) | ' +
                             data.time +
                             's Rest Time'),
                       ],
-                    ),
+                    )),
                     actions: [
                       TextButton(
                           onPressed: () {

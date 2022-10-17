@@ -95,10 +95,14 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
               return SizedBox(
                 child: Column(
                   children: [
+                    Text('Sets:' + widget.sets.toString()),
                     Text('Reps:' + widget.reps.toString()),
                     Text('Rest Time: ' + widget.restTime.toString()),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
-                      child: Row(
+                      child: Column(
                         children: [
                           Text('Workout Weight Used: '),
                           SizedBox(
@@ -140,6 +144,9 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
             }
           })),
           Text('Time Taken: ' + widget.workoutTime),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

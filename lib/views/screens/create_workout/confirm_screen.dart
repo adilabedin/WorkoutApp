@@ -118,40 +118,150 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 120,
-                            child: TextInputField(
-                              controller: _setController,
-                              labelText: 'Sets/Distance',
-                              lines: 1,
+                      Container(child: LayoutBuilder(builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        workoutType.workoutType = _selectedValue!;
+                        if (workoutType.workoutType == 'cardio') {
+                          return Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 100,
+                                        height: 30,
+                                        child: Text('Distance'),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                        width: 100,
+                                        child: Text('Laps'),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                        width: 100,
+                                        child: Text('Rest Time'),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                          controller: _setController,
+                                          labelText: 'Distance',
+                                          lines: 1,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                            controller: _repController,
+                                            labelText: 'laps',
+                                            lines: 1),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                          controller: _timeController,
+                                          labelText: 'Rest time',
+                                          lines: 1,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 24),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 120,
-                            child: TextInputField(
-                                controller: _repController,
-                                labelText: 'laps/Reps',
-                                lines: 1),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 120,
-                            child: TextInputField(
-                              controller: _timeController,
-                              labelText: 'Rest time',
-                              lines: 1,
+                          );
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        height: 30,
+                                        width: 100,
+                                        child: Text('Sets'),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                        width: 100,
+                                        child: Text('Reps'),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                        width: 100,
+                                        child: Text('Rest Time'),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                          controller: _setController,
+                                          labelText: 'Sets',
+                                          lines: 1,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                            controller: _repController,
+                                            labelText: 'reps',
+                                            lines: 1),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 100,
+                                        child: TextInputField(
+                                          controller: _timeController,
+                                          labelText: 'Rest time',
+                                          lines: 1,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 24),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 24),
-                        ],
-                      ),
+                          );
+                        }
+                      })),
+                      SizedBox(height: 10),
                       ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
