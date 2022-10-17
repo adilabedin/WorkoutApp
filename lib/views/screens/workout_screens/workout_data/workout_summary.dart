@@ -136,7 +136,7 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return UsedWorkoutData();
+                          return WorkoutData();
                         },
                       ),
                     );

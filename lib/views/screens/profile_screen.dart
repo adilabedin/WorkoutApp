@@ -221,7 +221,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: InkWell(
                                 onTap: () {
                                   if (widget.uid == authController.user.uid) {
-                                    Get.to(() => UsedWorkoutData());
+                                    Get.to(() => WorkoutData());
                                   } else {
                                     controller.followUser();
                                   }

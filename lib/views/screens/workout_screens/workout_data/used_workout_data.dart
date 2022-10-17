@@ -9,14 +9,14 @@ import 'package:workout_app/views/screens/workout_screens/workout_data/cardio_tr
 import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/bench_press_data.dart';
 import 'package:workout_app/views/screens/workout_screens/workout_data/weight_training/wt_workout_data_screen.dart';
 
-class UsedWorkoutData extends StatefulWidget {
-  const UsedWorkoutData({super.key});
+class WorkoutData extends StatefulWidget {
+  const WorkoutData({super.key});
 
   @override
-  State<UsedWorkoutData> createState() => _UsedWorkoutDataState();
+  State<WorkoutData> createState() => _WorkoutDataState();
 }
 
-class _UsedWorkoutDataState extends State<UsedWorkoutData> {
+class _WorkoutDataState extends State<WorkoutData> {
   WorkoutDataController workoutData = Get.put(WorkoutDataController());
 
   @override

@@ -30,7 +30,7 @@ class _BuildWorkoutTimerState extends State<BuildWorkoutTimer> {
     setState(() {
       started = false;
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => UsedWorkoutData()));
+          context, MaterialPageRoute(builder: (context) => WorkoutData()));
     });
   }
 
