@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:workout_app/constants.dart';
+import 'package:workout_app/models/body_weight_training.dart';
 import 'package:workout_app/models/cardio.dart';
 import 'package:workout_app/models/progressWT.dart';
 import 'package:workout_app/models/weight_training.dart';
@@ -19,10 +20,13 @@ class WorkoutDataController extends GetxController {
   final Rx<List<Cardio>> _swimming = Rx<List<Cardio>>([]);
   final Rx<List<Cardio>> _cycling = Rx<List<Cardio>>([]);
 
-  final Rx<List<WeightTraining>> _pushUps = Rx<List<WeightTraining>>([]);
-  final Rx<List<WeightTraining>> _pullUps = Rx<List<WeightTraining>>([]);
-  final Rx<List<WeightTraining>> _bwSquats = Rx<List<WeightTraining>>([]);
-  final Rx<List<WeightTraining>> _sitUps = Rx<List<WeightTraining>>([]);
+  final Rx<List<BodyWeightTraining>> _pushUps =
+      Rx<List<BodyWeightTraining>>([]);
+  final Rx<List<BodyWeightTraining>> _pullUps =
+      Rx<List<BodyWeightTraining>>([]);
+  final Rx<List<BodyWeightTraining>> _bwSquats =
+      Rx<List<BodyWeightTraining>>([]);
+  final Rx<List<BodyWeightTraining>> _sitUps = Rx<List<BodyWeightTraining>>([]);
 
   List<WeightTraining> get benchPress => _benchPress.value;
   List<WeightTraining> get squats => _squats.value;
@@ -33,10 +37,10 @@ class WorkoutDataController extends GetxController {
   List<Cardio> get swimming => _swimming.value;
   List<Cardio> get cycling => _cycling.value;
 
-  List<WeightTraining> get pushUps => _pushUps.value;
-  List<WeightTraining> get pullUps => _pullUps.value;
-  List<WeightTraining> get bwSquats => _bwSquats.value;
-  List<WeightTraining> get sitUps => _sitUps.value;
+  List<BodyWeightTraining> get pushUps => _pushUps.value;
+  List<BodyWeightTraining> get pullUps => _pullUps.value;
+  List<BodyWeightTraining> get bwSquats => _bwSquats.value;
+  List<BodyWeightTraining> get sitUps => _sitUps.value;
 
   getBenchPress(String workoutType, String title) async {
     String uid = firebaseAuth.currentUser!.uid;
@@ -120,9 +124,9 @@ class WorkoutDataController extends GetxController {
         .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
-      List<WeightTraining> retVal = [];
+      List<BodyWeightTraining> retVal = [];
       for (var elem in query.docs) {
-        retVal.add(WeightTraining.fromSnap(elem));
+        retVal.add(BodyWeightTraining.fromSnap(elem));
       }
       return retVal;
     }));
@@ -138,9 +142,9 @@ class WorkoutDataController extends GetxController {
         .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
-      List<WeightTraining> retVal = [];
+      List<BodyWeightTraining> retVal = [];
       for (var elem in query.docs) {
-        retVal.add(WeightTraining.fromSnap(elem));
+        retVal.add(BodyWeightTraining.fromSnap(elem));
       }
       return retVal;
     }));
@@ -156,9 +160,9 @@ class WorkoutDataController extends GetxController {
         .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
-      List<WeightTraining> retVal = [];
+      List<BodyWeightTraining> retVal = [];
       for (var elem in query.docs) {
-        retVal.add(WeightTraining.fromSnap(elem));
+        retVal.add(BodyWeightTraining.fromSnap(elem));
       }
       return retVal;
     }));
@@ -174,9 +178,9 @@ class WorkoutDataController extends GetxController {
         .collection(title)
         .snapshots()
         .map((QuerySnapshot query) {
-      List<WeightTraining> retVal = [];
+      List<BodyWeightTraining> retVal = [];
       for (var elem in query.docs) {
-        retVal.add(WeightTraining.fromSnap(elem));
+        retVal.add(BodyWeightTraining.fromSnap(elem));
       }
       return retVal;
     }));
@@ -270,15 +274,8 @@ class WorkoutDataController extends GetxController {
     }
   }
 
-  saveBodyWeightSummary(
-      String workoutType,
-      String title,
-      String description,
-      int sets,
-      int reps,
-      int restTime,
-      int workoutWeight,
-      String workoutTime) async {
+  saveBodyWeightSummary(String workoutType, String title, String description,
+      int sets, int reps, int restTime, String workoutTime) async {
     try {
       String uid = firebaseAuth.currentUser!.uid;
       var allDocs = await firestore
@@ -290,7 +287,7 @@ class WorkoutDataController extends GetxController {
           .get();
       int len = allDocs.docs.length;
 
-      WeightTraining weightTraining = WeightTraining(
+      BodyWeightTraining weightTraining = BodyWeightTraining(
         uid: uid,
         id: title,
         workoutType: workoutType,
@@ -299,7 +296,6 @@ class WorkoutDataController extends GetxController {
         sets: sets,
         reps: reps,
         restTime: restTime,
-        workoutWeight: workoutWeight,
         workoutTime: workoutTime,
       );
 

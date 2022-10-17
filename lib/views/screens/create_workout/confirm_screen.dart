@@ -4,11 +4,8 @@ import 'package:get/get.dart';
 import 'package:workout_app/controllers/upload_video_controller.dart';
 import 'package:workout_app/models/workoutDetails.dart';
 import 'package:workout_app/views/screens/home_screen.dart';
-import 'package:workout_app/views/screens/workout_video_screen/video_screen.dart';
-
 import 'package:workout_app/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
-import 'package:workout_app/views/widgets/workoutType.dart';
 
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;

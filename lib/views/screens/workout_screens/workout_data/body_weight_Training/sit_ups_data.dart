@@ -36,7 +36,7 @@ class _SitUpsDataState extends State<SitUpsData> {
     return Scaffold(
       body: Obx(() {
         items = workoutController.sitUps.length;
-        progressWTList();
+        progressBWTList();
 
         return PageView.builder(
           itemCount: items,
@@ -85,11 +85,11 @@ class _SitUpsDataState extends State<SitUpsData> {
     );
   }
 
-  progressWTList() {
+  progressBWTList() {
     for (int i = 0; i < workoutController.sitUps.length; i++) {
       Rdata.add(ProgressWT(
           workoutName: workoutController.sitUps[i].workoutTime,
-          weightused: workoutController.sitUps[i].workoutWeight,
+          weightused: workoutController.sitUps[i].reps,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }

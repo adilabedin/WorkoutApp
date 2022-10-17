@@ -65,7 +65,7 @@ class _RunningDataState extends State<RunningData> {
                       ),
                       Text(
                         'Timer: ' + data.workoutTime.toString() + 's',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       ProgressChart(
                         data: Rdata,

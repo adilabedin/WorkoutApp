@@ -9,7 +9,7 @@ class BodyWeightTraining {
   int sets;
   int reps;
   int restTime;
-  int workoutWeight;
+
   String workoutTime;
 
   BodyWeightTraining({
@@ -21,7 +21,6 @@ class BodyWeightTraining {
     required this.sets,
     required this.reps,
     required this.restTime,
-    required this.workoutWeight,
     required this.workoutTime,
   });
 
@@ -34,7 +33,6 @@ class BodyWeightTraining {
         "sets": sets,
         "reps": reps,
         "restTime": restTime,
-        "workoutWeight": workoutWeight,
         "workoutTime": workoutTime
       };
 
@@ -50,7 +48,6 @@ class BodyWeightTraining {
         sets: snapshot['sets'],
         reps: snapshot['reps'],
         restTime: snapshot['restTime'],
-        workoutWeight: snapshot['workoutWeight'],
         workoutTime: snapshot['workoutTime']);
   }
 }

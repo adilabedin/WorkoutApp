@@ -51,7 +51,13 @@ class WorkoutCard extends StatelessWidget {
                   child: Text('Start Workout'),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text('Description'),
+                      content: Text(description),
+                    ),
+                  ),
                   child: Text('Read Description'),
                 ),
               ],

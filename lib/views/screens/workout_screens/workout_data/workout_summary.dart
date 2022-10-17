@@ -76,18 +76,15 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
             widget.workoutType + ': ' + widget.workoutName,
             style: TextStyle(fontSize: 18),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-              child: Column(
-            children: [
-              Text('Description:'),
-              Text(widget.description),
-            ],
-          )),
-          SizedBox(
-            height: 10,
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Container(
+                child: Column(
+              children: [
+                Text('Description:'),
+                Text(widget.description),
+              ],
+            )),
           ),
           Container(child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
@@ -181,7 +178,6 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
                           widget.sets,
                           widget.reps,
                           widget.restTime,
-                          int.parse(_workoutWeightUsed.text),
                           widget.workoutTime);
                     }
                     Navigator.push(

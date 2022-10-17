@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_app/controllers/auth_controller.dart';
 import 'package:workout_app/views/screens/create_workout/add_workout_screen.dart';
-import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workout_video_screen.dart';
 import 'package:workout_app/views/screens/workout_screens/favourite_workouts/favourite_workouts_screen.dart';
 import 'package:workout_app/views/screens/messages_screen.dart';
 import 'package:workout_app/views/screens/profile_screen.dart';

@@ -37,7 +37,7 @@ class _BWSquatsDataState extends State<BWSquatsData> {
     return Scaffold(
       body: Obx(() {
         items = workoutController.bwSquats.length;
-        progressWTList();
+        progressBWTList();
 
         return PageView.builder(
           itemCount: items,
@@ -81,11 +81,11 @@ class _BWSquatsDataState extends State<BWSquatsData> {
     );
   }
 
-  progressWTList() {
+  progressBWTList() {
     for (int i = 0; i < workoutController.bwSquats.length; i++) {
       Rdata.add(ProgressWT(
           workoutName: workoutController.bwSquats[i].workoutTime,
-          weightused: workoutController.bwSquats[i].workoutWeight,
+          weightused: workoutController.bwSquats[i].reps,
           barColor: charts.ColorUtil.fromDartColor(Colors.green)));
     }
   }
