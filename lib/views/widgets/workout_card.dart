@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:workout_app/views/screens/workout_screens/quick_workout_screen.dart';
 
 class WorkoutCard extends StatelessWidget {

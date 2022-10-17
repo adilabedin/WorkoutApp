@@ -57,6 +57,7 @@ class _BWSquatsDataState extends State<BWSquatsData> {
                         style: TextStyle(fontSize: 18),
                       ),
                       WorkoutCard(
+                          workoutType: data.workoutType,
                           title: data.title,
                           description: data.description,
                           sets: data.sets,

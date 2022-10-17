@@ -56,6 +56,7 @@ class _PushUpsDataState extends State<PushUpsData> {
                         style: TextStyle(fontSize: 18),
                       ),
                       WorkoutCard(
+                          workoutType: data.workoutType,
                           title: data.title,
                           description: data.description,
                           sets: data.sets,

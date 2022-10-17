@@ -72,39 +72,74 @@ class _WorkoutSummaryState extends State<WorkoutSummary> {
       body: Center(
           child: Column(
         children: [
-          Text(widget.workoutType),
-          Text(widget.workoutName),
-          Text(widget.description),
-          Text(widget.workoutTime),
-          Text(widget.sets.toString()),
-          Text(widget.reps.toString()),
-          Text(widget.restTime.toString()),
+          Text(
+            widget.workoutType + ': ' + widget.workoutName,
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+              child: Column(
+            children: [
+              Text('Description:'),
+              Text(widget.description),
+            ],
+          )),
+          SizedBox(
+            height: 10,
+          ),
           Container(child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-            if (widget.workoutType == 'Weight-Training' ||
-                widget.workoutType == 'Body-Weight-Training') {
+            if (widget.workoutType == 'Weight-Training') {
               return SizedBox(
-                width: 80,
-                height: 80,
-                child: TextFormField(
-                  controller: _workoutWeightUsed,
-                  decoration: InputDecoration(
-                    hintText: '',
-                    hintStyle: TextStyle(color: Colors.blue),
-                    filled: true,
-                    fillColor: Colors.black,
-                    border: OutlineInputBorder(),
-                  ),
-                  style: TextStyle(color: Colors.blue),
-                  keyboardType: TextInputType.number,
+                child: Column(
+                  children: [
+                    Text('Reps:' + widget.reps.toString()),
+                    Text('Rest Time: ' + widget.restTime.toString()),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text('Workout Weight Used: '),
+                          SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: TextFormField(
+                              controller: _workoutWeightUsed,
+                              decoration: InputDecoration(
+                                hintText: '',
+                                hintStyle: TextStyle(color: Colors.blue),
+                                filled: true,
+                                fillColor: Colors.black,
+                                border: OutlineInputBorder(),
+                              ),
+                              style: TextStyle(color: Colors.blue),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               );
+            } else if (widget.workoutType == 'Body-Weight-Training') {
+              return SizedBox(
+                  width: 400,
+                  height: 80,
+                  child: Column(children: [
+                    Text('Sets:' + widget.sets.toString()),
+                    Text('Reps:' + widget.reps.toString()),
+                    Text('Rest Time: ' + widget.restTime.toString()),
+                  ]));
             } else {
-              return Text('');
+              return Center(
+                child:
+                    Text('Distance Covered: ' + widget.sets.toString() + 'm'),
+              );
             }
-            ;
-            ;
           })),
+          Text('Time Taken: ' + widget.workoutTime),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
